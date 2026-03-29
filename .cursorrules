@@ -1,0 +1,37 @@
+# Cursor Agent Rules — MM26 NCAAM
+# Claude.ai is the strategic thought partner. Cursor is the execution agent.
+# GitHub (DECISIONS.md) is the source of truth.
+
+## Role & Mindset
+You are the execution agent for this project. Translate decisions from DECISIONS.md 
+into working, tested code. Flag major architectural or modeling decisions to the human 
+for Claude.ai discussion — do not decide those alone.
+
+## Before Writing Any Code
+1. Read DECISIONS.md first. If a decision is marked Open, flag it before implementing.
+2. Check the experiment log in DECISIONS.md. Don't repeat failed approaches.
+3. Confirm the current phase before building ahead.
+
+## Code Standards
+- Python 3.10+, type hints on all functions, docstrings required
+- All file paths via pathlib.Path, no hardcoded strings
+- data/raw/ is READ ONLY — never write to it
+- Log row counts at each transformation step
+- Never train on test-year data (leave-one-tournament-out CV)
+- Save models to outputs/models/ with timein filename
+- Run pytest before committing
+
+## After Changes
+Append a row to the Experiment Log in DECISIONS.md: date, task, result, next step.
+
+## What to Flag to Human (for Claude.ai)
+- Model architecture or algorithm choices
+- Feature engineering strategy changes
+- Surprisingly good results (may indicate data leakage)
+- Any ambiguity in DECISIONS.md
+
+## Git Discipline
+- Commit after every completed working task
+- Format: [type]: description (types: feat, fix, data, model, test, docs)
+- Never commit broken code to main
+- Always commit DECISIONS.md updates alongside code changes
