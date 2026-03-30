@@ -1,0 +1,11 @@
+# pybart: install from Git per DECISIONS.md
+pybart @ git+https://github.com/avewright/pybart
+CBBpy>=2.1
+pandas>=2.0
+beautifulsoup4
+requests
+lxml
+html5lib
+pyarrow
+scikit-learn
+xgboost
