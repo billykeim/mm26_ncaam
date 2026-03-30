@@ -5,6 +5,7 @@ from pathlib import Path
 PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent.parent
 DATA_RAW: Path = PROJECT_ROOT / "data" / "raw"
 DATA_PROCESSED: Path = PROJECT_ROOT / "data" / "processed"
+DATA_FEATURES: Path = PROJECT_ROOT / "data" / "features"
 TORVIK_RAW: Path = DATA_RAW / "torvik"
 TORVIK_TIMEMACHINE: Path = TORVIK_RAW / "timemachine"
 TORVIK_GAME_RESULTS: Path = TORVIK_RAW / "game_results"
