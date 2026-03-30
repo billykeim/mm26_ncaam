@@ -152,6 +152,7 @@ mm26_ncaam/
 | Date | Experiment | Result | Next Step |
 |------|-----------|--------|-----------|
 | 2026-03-29 | Pipeline setup | Repo structure + decision framework established | Begin data ingestion |
+| 2026-03-29 | Repo scaffold (Cursor) | `data/`, `src/`, `tests/`, `notebooks/`, `outputs/` tree; empty modules and `__init__.py` only | Implement data ingestion |
 
 ---
 
