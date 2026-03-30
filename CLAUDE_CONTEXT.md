@@ -1,6 +1,6 @@
 # Claude Session Context — MM26 NCAAM
 > **Paste this at the start of every new Claude.ai conversation.**
-> Update the "Current State" section after each session before committing.
+> Update "Current State" before committing at end of each session.
 
 ---
 
@@ -9,62 +9,57 @@ Full bracket simulation model for NCAAM March Madness.
 Repo: https://github.com/billykeim/mm26_ncaam
 
 ## My Stack
-- **Execution agent:** Cursor (reads repo directly, governed by .cursorrules)
+- **Execution agent:** Cursor (reads repo directly, governed by .cursorrules + PIPELINE.md)
 - **Thought partner:** Claude.ai (stateless — needs this file for context each session)
-- **Source of truth:** GitHub (DECISIONS.md is the canonical record)
+- **Source of truth:** GitHub (DECISIONS.md + PIPELINE.md are canonical)
 
 ## Pipeline Protocol
 1. Think + decide with Claude.ai → update DECISIONS.md → commit
-2. Cursor reads DECISIONS.md + .cursorrules → executes → logs results → commits
+2. Cursor reads DECISIONS.md + PIPELINE.md + .cursorrules → executes → logs results → commits
 3. Next Claude session starts by pasting this file
 
 ---
 
 ## Current Project State
-**Phase:** Data Ingestion (next immediate step)
+**Phase:** Data Ingestion — executing full pipeline
 
-**What's been decided (all locked):**
-- Prediction target: full bracket simulation end-to-end
-- Primary model: XGBoost (game-level win probability)
-- Baseline model: Logistic Regression (seed-only)
-- Bracket sim: Monte Carlo (10,000 iterations)
-- Calibration: Platt scaling
+**All architecture decisions locked:**
+- Prediction target: full bracket simulation (game-level XGBoost + Monte Carlo 10,000 iterations)
+- Primary model: XGBoost | Baseline: Logistic Regression (seed-only) | Calibration: Platt scaling
 - Train/test: leave-one-tournament-out CV
-- Data: Bart Torvik + Sports-Reference + historical tournament results
-- Date range: 2008–present (~17 tournaments)
-- Injury data: simple proxy only (no NLP), or omit from v1
-- Betting lines: nice to have, not blocking
+- Core principle: ALL features are rolling (game-level windows, no end-of-season leakage)
+- Data: Torvik (pybart) + Coach history (SR/pandas.read_html) + Game logs (CBBpy)
+- Date range: 2008–present (excl. 2020 COVID); 2021 flagged is_bubble_year=1
+- 2008–2010: use team_ratings() instead of time_machine() (time_machine only back to 2011)
+- Recency decay: λ=0.02 exponential weighting (Decision B)
+- Name normalization: team_name_map.json + coach_name_map.json (Decision C)
 
 **What's been built:**
-- Repo structure + pipeline files (DECISIONS.md, CLAUDE_CONTEXT.md, .cursorrules)
-- Directory structure defined in DECISIONS.md (not yet scaffolded in repo)
+- ✅ Repo scaffolded with full directory structure
+- ✅ DECISIONS.md — strategic source of truth
+- ✅ PIPELINE.md — full technical reference (schema, crosswalks, feature specs, validation)
+- ✅ .cursorrules — Cursor agent behavior rules
+- ✅ CLAUDE_CONTEXT.md — this file
 
-**What's next:**
-1. Scaffold the directory structure in the repo
-2. Build data ingestion scripts (Torvik + Sports-Reference + tournament results)
-3. First EDA notebook — sanity check the data
+**What's in progress / next:**
+1. Cursor executing full ingestion pipeline (ingest_torvik → ingest_coaches → ingest_gamelogs)
+2. Build processed layer (game_log, coach_store, player_aggregates)
+3. Build rolling features + static features
+4. Build matchup feature matrix
+5. Run validate.py
+6. Build training splits
 
-**Open questions (unresolved):**
-- Bart Torvik ingestion method (API vs scrape vs manual export)?
-- Betting lines source?
-- Coach experience encoding for first-timers?
+**Open questions:**
+- CBBpy coverage for 2008–2010 game logs — validate during ingestion
+- Mid-season coach change handling — flag + use start-of-season coach
+- 2021 bubble year — include with flag, test sensitivity in v2
 
 ---
 
-## Key Decisions Summary
-
-| Decision | Choice |
-|----------|--------|
-| Prediction target | Full bracket simulation (game-level model + Monte Carlo bracket sim) |
-| Primary model | XGBoost |
-| Baseline | Logistic Regression (seed-only) |
-| Simulation | Monte Carlo 10,000 iterations |
-| Calibration | Platt scaling |
-| Train/test split | Leave-one-tournament-out CV |
-| Primary data | Bart Torvik, Sports-Reference CBB |
-| Date range | 2008–present |
-| Injury data | Simple proxy or omit v1 |
-| Neural nets | v2 only, after XGBoost baseline |
+## Key Files to Reference
+- `DECISIONS.md` — all strategic decisions, locked choices, open questions
+- `PIPELINE.md` — feature schemas, file layout, coach ingestion design, extensibility contract
+- `.cursorrules` — how Cursor should behave
 
 ---
 
