@@ -77,10 +77,10 @@ See `PIPELINE.md` for full rolling feature specifications.
 
 | Source | Type | Priority | Tool | Status |
 |--------|------|----------|------|--------|
-| Bart Torvik / T-Rank | Team efficiency, advanced metrics | ⭐ Primary | pybart | 🔴 Not ingested |
-| Sports-Reference CBB (coaches) | Coach tournament history | ⭐ Primary | pandas.read_html + BeautifulSoup | 🔴 Not ingested |
-| CBBpy (ESPN) | Game-by-game box scores, game logs | ⭐ Primary | CBBpy pip package | 🔴 Not ingested |
-| Historical tournament results | Bracket outcomes | ⭐ Required | pybart.madness | 🔴 Not ingested |
+| Bart Torvik / T-Rank | Team efficiency, advanced metrics | ⭐ Primary | pybart | 🟢 Ingested |
+| Sports-Reference CBB (coaches) | Coach tournament history | ⭐ Primary | pandas.read_html + BeautifulSoup | 🟢 Ingested |
+| CBBpy (ESPN) | Game-by-game box scores, game logs | ⭐ Primary | CBBpy pip package | 🟡 In progress (2025 cached; full years running) |
+| Historical tournament results | Bracket outcomes | ⭐ Required | pybart.madness | 🟢 Ingested (conf=3 NCAA filter) |
 | Betting lines (pre-tournament) | Market-implied probabilities | 🟡 Nice to have | TBD | 🔴 Not ingested |
 | Injury / roster news | Player availability proxy | 🟢 Simple proxy only | TBD | 🔴 Not ingested |
 
@@ -246,6 +246,7 @@ mm26_ncaam/
 |------|-----------|--------|-----------|
 | 2026-03-29 | Pipeline setup | Repo scaffolded, .cursorrules + DECISIONS.md + CLAUDE_CONTEXT.md committed | Begin data ingestion |
 | 2026-03-29 | Architecture decisions | All foundational decisions locked; rolling feature design finalized | Execute ingestion pipeline |
+| 2026-03-29 | Full raw ingestion | Torvik 191,304 rows; SR coaches 14,334 + index 4,096; team map 67; CBBpy gamelogs 265,867 rows (2025) + multi-year job started | build_game_log / rolling features |
 
 ---
 

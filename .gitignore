@@ -5,3 +5,4 @@ __pycache__/
 venv/
 .torvik_cache/
 .Rhistory
+gamelogs_full.log
