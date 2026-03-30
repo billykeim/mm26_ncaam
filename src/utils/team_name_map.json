@@ -400,5 +400,2081 @@
     "torvik": "Xavier",
     "sports_ref": "Xavier",
     "cbbpy": "xavier"
+  },
+  "A10": {
+    "canonical": "A10",
+    "torvik": "A10",
+    "sports_ref": "A10",
+    "cbbpy": "a10"
+  },
+  "ACC": {
+    "canonical": "ACC",
+    "torvik": "ACC",
+    "sports_ref": "ACC",
+    "cbbpy": "acc"
+  },
+  "AE": {
+    "canonical": "AE",
+    "torvik": "AE",
+    "sports_ref": "AE",
+    "cbbpy": "ae"
+  },
+  "ASun": {
+    "canonical": "ASun",
+    "torvik": "ASun",
+    "sports_ref": "ASun",
+    "cbbpy": "asun"
+  },
+  "Abilene Christian": {
+    "canonical": "Abilene Christian",
+    "torvik": "Abilene Christian",
+    "sports_ref": "Abilene Christian",
+    "cbbpy": "abilene-christian"
+  },
+  "Air Force": {
+    "canonical": "Air Force",
+    "torvik": "Air Force",
+    "sports_ref": "Air Force",
+    "cbbpy": "air-force"
+  },
+  "Akron": {
+    "canonical": "Akron",
+    "torvik": "Akron",
+    "sports_ref": "Akron",
+    "cbbpy": "akron"
+  },
+  "Alabama A&M": {
+    "canonical": "Alabama A&M",
+    "torvik": "Alabama A&M",
+    "sports_ref": "Alabama A&M",
+    "cbbpy": "alabama-a-m"
+  },
+  "Alabama St.": {
+    "canonical": "Alabama St.",
+    "torvik": "Alabama St.",
+    "sports_ref": "Alabama St.",
+    "cbbpy": "alabama-st"
+  },
+  "Albany": {
+    "canonical": "Albany",
+    "torvik": "Albany",
+    "sports_ref": "Albany",
+    "cbbpy": "albany"
+  },
+  "Alcorn St.": {
+    "canonical": "Alcorn St.",
+    "torvik": "Alcorn St.",
+    "sports_ref": "Alcorn St.",
+    "cbbpy": "alcorn-st"
+  },
+  "American": {
+    "canonical": "American",
+    "torvik": "American",
+    "sports_ref": "American",
+    "cbbpy": "american"
+  },
+  "Appalachian St.": {
+    "canonical": "Appalachian St.",
+    "torvik": "Appalachian St.",
+    "sports_ref": "Appalachian St.",
+    "cbbpy": "appalachian-st"
+  },
+  "Arkansas Little Rock": {
+    "canonical": "Arkansas Little Rock",
+    "torvik": "Arkansas Little Rock",
+    "sports_ref": "Arkansas Little Rock",
+    "cbbpy": "arkansas-little-rock"
+  },
+  "Arkansas Pine Bluff": {
+    "canonical": "Arkansas Pine Bluff",
+    "torvik": "Arkansas Pine Bluff",
+    "sports_ref": "Arkansas Pine Bluff",
+    "cbbpy": "arkansas-pine-bluff"
+  },
+  "Arkansas St.": {
+    "canonical": "Arkansas St.",
+    "torvik": "Arkansas St.",
+    "sports_ref": "Arkansas St.",
+    "cbbpy": "arkansas-st"
+  },
+  "Army": {
+    "canonical": "Army",
+    "torvik": "Army",
+    "sports_ref": "Army",
+    "cbbpy": "army"
+  },
+  "Austin Peay": {
+    "canonical": "Austin Peay",
+    "torvik": "Austin Peay",
+    "sports_ref": "Austin Peay",
+    "cbbpy": "austin-peay"
+  },
+  "B10": {
+    "canonical": "B10",
+    "torvik": "B10",
+    "sports_ref": "B10",
+    "cbbpy": "b10"
+  },
+  "B12": {
+    "canonical": "B12",
+    "torvik": "B12",
+    "sports_ref": "B12",
+    "cbbpy": "b12"
+  },
+  "BE": {
+    "canonical": "BE",
+    "torvik": "BE",
+    "sports_ref": "BE",
+    "cbbpy": "be"
+  },
+  "BSky": {
+    "canonical": "BSky",
+    "torvik": "BSky",
+    "sports_ref": "BSky",
+    "cbbpy": "bsky"
+  },
+  "BSth": {
+    "canonical": "BSth",
+    "torvik": "BSth",
+    "sports_ref": "BSth",
+    "cbbpy": "bsth"
+  },
+  "BW": {
+    "canonical": "BW",
+    "torvik": "BW",
+    "sports_ref": "BW",
+    "cbbpy": "bw"
+  },
+  "Ball St.": {
+    "canonical": "Ball St.",
+    "torvik": "Ball St.",
+    "sports_ref": "Ball St.",
+    "cbbpy": "ball-st"
+  },
+  "Bellarmine": {
+    "canonical": "Bellarmine",
+    "torvik": "Bellarmine",
+    "sports_ref": "Bellarmine",
+    "cbbpy": "bellarmine"
+  },
+  "Belmont": {
+    "canonical": "Belmont",
+    "torvik": "Belmont",
+    "sports_ref": "Belmont",
+    "cbbpy": "belmont"
+  },
+  "Bethune Cookman": {
+    "canonical": "Bethune Cookman",
+    "torvik": "Bethune Cookman",
+    "sports_ref": "Bethune Cookman",
+    "cbbpy": "bethune-cookman"
+  },
+  "Binghamton": {
+    "canonical": "Binghamton",
+    "torvik": "Binghamton",
+    "sports_ref": "Binghamton",
+    "cbbpy": "binghamton"
+  },
+  "Boise St.": {
+    "canonical": "Boise St.",
+    "torvik": "Boise St.",
+    "sports_ref": "Boise St.",
+    "cbbpy": "boise-st"
+  },
+  "Boston College": {
+    "canonical": "Boston College",
+    "torvik": "Boston College",
+    "sports_ref": "Boston College",
+    "cbbpy": "boston-college"
+  },
+  "Boston University": {
+    "canonical": "Boston University",
+    "torvik": "Boston University",
+    "sports_ref": "Boston University",
+    "cbbpy": "boston-university"
+  },
+  "Bowling Green": {
+    "canonical": "Bowling Green",
+    "torvik": "Bowling Green",
+    "sports_ref": "Bowling Green",
+    "cbbpy": "bowling-green"
+  },
+  "Bradley": {
+    "canonical": "Bradley",
+    "torvik": "Bradley",
+    "sports_ref": "Bradley",
+    "cbbpy": "bradley"
+  },
+  "Brown": {
+    "canonical": "Brown",
+    "torvik": "Brown",
+    "sports_ref": "Brown",
+    "cbbpy": "brown"
+  },
+  "Bryant": {
+    "canonical": "Bryant",
+    "torvik": "Bryant",
+    "sports_ref": "Bryant",
+    "cbbpy": "bryant"
+  },
+  "Bucknell": {
+    "canonical": "Bucknell",
+    "torvik": "Bucknell",
+    "sports_ref": "Bucknell",
+    "cbbpy": "bucknell"
+  },
+  "Buffalo": {
+    "canonical": "Buffalo",
+    "torvik": "Buffalo",
+    "sports_ref": "Buffalo",
+    "cbbpy": "buffalo"
+  },
+  "Butler": {
+    "canonical": "Butler",
+    "torvik": "Butler",
+    "sports_ref": "Butler",
+    "cbbpy": "butler"
+  },
+  "CAA": {
+    "canonical": "CAA",
+    "torvik": "CAA",
+    "sports_ref": "CAA",
+    "cbbpy": "caa"
+  },
+  "CUSA": {
+    "canonical": "CUSA",
+    "torvik": "CUSA",
+    "sports_ref": "CUSA",
+    "cbbpy": "cusa"
+  },
+  "Cal Baptist": {
+    "canonical": "Cal Baptist",
+    "torvik": "Cal Baptist",
+    "sports_ref": "Cal Baptist",
+    "cbbpy": "cal-baptist"
+  },
+  "Cal Poly": {
+    "canonical": "Cal Poly",
+    "torvik": "Cal Poly",
+    "sports_ref": "Cal Poly",
+    "cbbpy": "cal-poly"
+  },
+  "Cal St. Bakersfield": {
+    "canonical": "Cal St. Bakersfield",
+    "torvik": "Cal St. Bakersfield",
+    "sports_ref": "Cal St. Bakersfield",
+    "cbbpy": "cal-st-bakersfield"
+  },
+  "Cal St. Fullerton": {
+    "canonical": "Cal St. Fullerton",
+    "torvik": "Cal St. Fullerton",
+    "sports_ref": "Cal St. Fullerton",
+    "cbbpy": "cal-st-fullerton"
+  },
+  "Cal St. Northridge": {
+    "canonical": "Cal St. Northridge",
+    "torvik": "Cal St. Northridge",
+    "sports_ref": "Cal St. Northridge",
+    "cbbpy": "cal-st-northridge"
+  },
+  "California": {
+    "canonical": "California",
+    "torvik": "California",
+    "sports_ref": "California",
+    "cbbpy": "california"
+  },
+  "Campbell": {
+    "canonical": "Campbell",
+    "torvik": "Campbell",
+    "sports_ref": "Campbell",
+    "cbbpy": "campbell"
+  },
+  "Canisius": {
+    "canonical": "Canisius",
+    "torvik": "Canisius",
+    "sports_ref": "Canisius",
+    "cbbpy": "canisius"
+  },
+  "Centenary": {
+    "canonical": "Centenary",
+    "torvik": "Centenary",
+    "sports_ref": "Centenary",
+    "cbbpy": "centenary"
+  },
+  "Central Arkansas": {
+    "canonical": "Central Arkansas",
+    "torvik": "Central Arkansas",
+    "sports_ref": "Central Arkansas",
+    "cbbpy": "central-arkansas"
+  },
+  "Central Connecticut": {
+    "canonical": "Central Connecticut",
+    "torvik": "Central Connecticut",
+    "sports_ref": "Central Connecticut",
+    "cbbpy": "central-connecticut"
+  },
+  "Central Michigan": {
+    "canonical": "Central Michigan",
+    "torvik": "Central Michigan",
+    "sports_ref": "Central Michigan",
+    "cbbpy": "central-michigan"
+  },
+  "Charleston": {
+    "canonical": "Charleston",
+    "torvik": "Charleston",
+    "sports_ref": "Charleston",
+    "cbbpy": "charleston"
+  },
+  "Charleston Southern": {
+    "canonical": "Charleston Southern",
+    "torvik": "Charleston Southern",
+    "sports_ref": "Charleston Southern",
+    "cbbpy": "charleston-southern"
+  },
+  "Charlotte": {
+    "canonical": "Charlotte",
+    "torvik": "Charlotte",
+    "sports_ref": "Charlotte",
+    "cbbpy": "charlotte"
+  },
+  "Chattanooga": {
+    "canonical": "Chattanooga",
+    "torvik": "Chattanooga",
+    "sports_ref": "Chattanooga",
+    "cbbpy": "chattanooga"
+  },
+  "Chicago St.": {
+    "canonical": "Chicago St.",
+    "torvik": "Chicago St.",
+    "sports_ref": "Chicago St.",
+    "cbbpy": "chicago-st"
+  },
+  "Cleveland St.": {
+    "canonical": "Cleveland St.",
+    "torvik": "Cleveland St.",
+    "sports_ref": "Cleveland St.",
+    "cbbpy": "cleveland-st"
+  },
+  "Coastal Carolina": {
+    "canonical": "Coastal Carolina",
+    "torvik": "Coastal Carolina",
+    "sports_ref": "Coastal Carolina",
+    "cbbpy": "coastal-carolina"
+  },
+  "Colgate": {
+    "canonical": "Colgate",
+    "torvik": "Colgate",
+    "sports_ref": "Colgate",
+    "cbbpy": "colgate"
+  },
+  "College of Charleston": {
+    "canonical": "College of Charleston",
+    "torvik": "College of Charleston",
+    "sports_ref": "College of Charleston",
+    "cbbpy": "college-of-charleston"
+  },
+  "Colorado St.": {
+    "canonical": "Colorado St.",
+    "torvik": "Colorado St.",
+    "sports_ref": "Colorado St.",
+    "cbbpy": "colorado-st"
+  },
+  "Columbia": {
+    "canonical": "Columbia",
+    "torvik": "Columbia",
+    "sports_ref": "Columbia",
+    "cbbpy": "columbia"
+  },
+  "Coppin St.": {
+    "canonical": "Coppin St.",
+    "torvik": "Coppin St.",
+    "sports_ref": "Coppin St.",
+    "cbbpy": "coppin-st"
+  },
+  "Cornell": {
+    "canonical": "Cornell",
+    "torvik": "Cornell",
+    "sports_ref": "Cornell",
+    "cbbpy": "cornell"
+  },
+  "Dartmouth": {
+    "canonical": "Dartmouth",
+    "torvik": "Dartmouth",
+    "sports_ref": "Dartmouth",
+    "cbbpy": "dartmouth"
+  },
+  "Dayton": {
+    "canonical": "Dayton",
+    "torvik": "Dayton",
+    "sports_ref": "Dayton",
+    "cbbpy": "dayton"
+  },
+  "DePaul": {
+    "canonical": "DePaul",
+    "torvik": "DePaul",
+    "sports_ref": "DePaul",
+    "cbbpy": "depaul"
+  },
+  "Delaware": {
+    "canonical": "Delaware",
+    "torvik": "Delaware",
+    "sports_ref": "Delaware",
+    "cbbpy": "delaware"
+  },
+  "Delaware St.": {
+    "canonical": "Delaware St.",
+    "torvik": "Delaware St.",
+    "sports_ref": "Delaware St.",
+    "cbbpy": "delaware-st"
+  },
+  "Denver": {
+    "canonical": "Denver",
+    "torvik": "Denver",
+    "sports_ref": "Denver",
+    "cbbpy": "denver"
+  },
+  "Detroit": {
+    "canonical": "Detroit",
+    "torvik": "Detroit",
+    "sports_ref": "Detroit",
+    "cbbpy": "detroit"
+  },
+  "Detroit Mercy": {
+    "canonical": "Detroit Mercy",
+    "torvik": "Detroit Mercy",
+    "sports_ref": "Detroit Mercy",
+    "cbbpy": "detroit-mercy"
+  },
+  "Dixie St.": {
+    "canonical": "Dixie St.",
+    "torvik": "Dixie St.",
+    "sports_ref": "Dixie St.",
+    "cbbpy": "dixie-st"
+  },
+  "Drake": {
+    "canonical": "Drake",
+    "torvik": "Drake",
+    "sports_ref": "Drake",
+    "cbbpy": "drake"
+  },
+  "Drexel": {
+    "canonical": "Drexel",
+    "torvik": "Drexel",
+    "sports_ref": "Drexel",
+    "cbbpy": "drexel"
+  },
+  "Duquesne": {
+    "canonical": "Duquesne",
+    "torvik": "Duquesne",
+    "sports_ref": "Duquesne",
+    "cbbpy": "duquesne"
+  },
+  "East Carolina": {
+    "canonical": "East Carolina",
+    "torvik": "East Carolina",
+    "sports_ref": "East Carolina",
+    "cbbpy": "east-carolina"
+  },
+  "East Tennessee St.": {
+    "canonical": "East Tennessee St.",
+    "torvik": "East Tennessee St.",
+    "sports_ref": "East Tennessee St.",
+    "cbbpy": "east-tennessee-st"
+  },
+  "Eastern Illinois": {
+    "canonical": "Eastern Illinois",
+    "torvik": "Eastern Illinois",
+    "sports_ref": "Eastern Illinois",
+    "cbbpy": "eastern-illinois"
+  },
+  "Eastern Kentucky": {
+    "canonical": "Eastern Kentucky",
+    "torvik": "Eastern Kentucky",
+    "sports_ref": "Eastern Kentucky",
+    "cbbpy": "eastern-kentucky"
+  },
+  "Eastern Michigan": {
+    "canonical": "Eastern Michigan",
+    "torvik": "Eastern Michigan",
+    "sports_ref": "Eastern Michigan",
+    "cbbpy": "eastern-michigan"
+  },
+  "Eastern Washington": {
+    "canonical": "Eastern Washington",
+    "torvik": "Eastern Washington",
+    "sports_ref": "Eastern Washington",
+    "cbbpy": "eastern-washington"
+  },
+  "Elon": {
+    "canonical": "Elon",
+    "torvik": "Elon",
+    "sports_ref": "Elon",
+    "cbbpy": "elon"
+  },
+  "Evansville": {
+    "canonical": "Evansville",
+    "torvik": "Evansville",
+    "sports_ref": "Evansville",
+    "cbbpy": "evansville"
+  },
+  "FIU": {
+    "canonical": "FIU",
+    "torvik": "FIU",
+    "sports_ref": "FIU",
+    "cbbpy": "fiu"
+  },
+  "Fairfield": {
+    "canonical": "Fairfield",
+    "torvik": "Fairfield",
+    "sports_ref": "Fairfield",
+    "cbbpy": "fairfield"
+  },
+  "Fairleigh Dickinson": {
+    "canonical": "Fairleigh Dickinson",
+    "torvik": "Fairleigh Dickinson",
+    "sports_ref": "Fairleigh Dickinson",
+    "cbbpy": "fairleigh-dickinson"
+  },
+  "Florida A&M": {
+    "canonical": "Florida A&M",
+    "torvik": "Florida A&M",
+    "sports_ref": "Florida A&M",
+    "cbbpy": "florida-a-m"
+  },
+  "Florida Atlantic": {
+    "canonical": "Florida Atlantic",
+    "torvik": "Florida Atlantic",
+    "sports_ref": "Florida Atlantic",
+    "cbbpy": "florida-atlantic"
+  },
+  "Florida Gulf Coast": {
+    "canonical": "Florida Gulf Coast",
+    "torvik": "Florida Gulf Coast",
+    "sports_ref": "Florida Gulf Coast",
+    "cbbpy": "florida-gulf-coast"
+  },
+  "Fordham": {
+    "canonical": "Fordham",
+    "torvik": "Fordham",
+    "sports_ref": "Fordham",
+    "cbbpy": "fordham"
+  },
+  "Fort Wayne": {
+    "canonical": "Fort Wayne",
+    "torvik": "Fort Wayne",
+    "sports_ref": "Fort Wayne",
+    "cbbpy": "fort-wayne"
+  },
+  "Fresno St.": {
+    "canonical": "Fresno St.",
+    "torvik": "Fresno St.",
+    "sports_ref": "Fresno St.",
+    "cbbpy": "fresno-st"
+  },
+  "Furman": {
+    "canonical": "Furman",
+    "torvik": "Furman",
+    "sports_ref": "Furman",
+    "cbbpy": "furman"
+  },
+  "GWC": {
+    "canonical": "GWC",
+    "torvik": "GWC",
+    "sports_ref": "GWC",
+    "cbbpy": "gwc"
+  },
+  "Gardner Webb": {
+    "canonical": "Gardner Webb",
+    "torvik": "Gardner Webb",
+    "sports_ref": "Gardner Webb",
+    "cbbpy": "gardner-webb"
+  },
+  "George Mason": {
+    "canonical": "George Mason",
+    "torvik": "George Mason",
+    "sports_ref": "George Mason",
+    "cbbpy": "george-mason"
+  },
+  "George Washington": {
+    "canonical": "George Washington",
+    "torvik": "George Washington",
+    "sports_ref": "George Washington",
+    "cbbpy": "george-washington"
+  },
+  "Georgetown": {
+    "canonical": "Georgetown",
+    "torvik": "Georgetown",
+    "sports_ref": "Georgetown",
+    "cbbpy": "georgetown"
+  },
+  "Georgia": {
+    "canonical": "Georgia",
+    "torvik": "Georgia",
+    "sports_ref": "Georgia",
+    "cbbpy": "georgia"
+  },
+  "Georgia Southern": {
+    "canonical": "Georgia Southern",
+    "torvik": "Georgia Southern",
+    "sports_ref": "Georgia Southern",
+    "cbbpy": "georgia-southern"
+  },
+  "Georgia St.": {
+    "canonical": "Georgia St.",
+    "torvik": "Georgia St.",
+    "sports_ref": "Georgia St.",
+    "cbbpy": "georgia-st"
+  },
+  "Georgia Tech": {
+    "canonical": "Georgia Tech",
+    "torvik": "Georgia Tech",
+    "sports_ref": "Georgia Tech",
+    "cbbpy": "georgia-tech"
+  },
+  "Grambling St.": {
+    "canonical": "Grambling St.",
+    "torvik": "Grambling St.",
+    "sports_ref": "Grambling St.",
+    "cbbpy": "grambling-st"
+  },
+  "Grand Canyon": {
+    "canonical": "Grand Canyon",
+    "torvik": "Grand Canyon",
+    "sports_ref": "Grand Canyon",
+    "cbbpy": "grand-canyon"
+  },
+  "Green Bay": {
+    "canonical": "Green Bay",
+    "torvik": "Green Bay",
+    "sports_ref": "Green Bay",
+    "cbbpy": "green-bay"
+  },
+  "Hampton": {
+    "canonical": "Hampton",
+    "torvik": "Hampton",
+    "sports_ref": "Hampton",
+    "cbbpy": "hampton"
+  },
+  "Hartford": {
+    "canonical": "Hartford",
+    "torvik": "Hartford",
+    "sports_ref": "Hartford",
+    "cbbpy": "hartford"
+  },
+  "Harvard": {
+    "canonical": "Harvard",
+    "torvik": "Harvard",
+    "sports_ref": "Harvard",
+    "cbbpy": "harvard"
+  },
+  "Hawaii": {
+    "canonical": "Hawaii",
+    "torvik": "Hawaii",
+    "sports_ref": "Hawaii",
+    "cbbpy": "hawaii"
+  },
+  "High Point": {
+    "canonical": "High Point",
+    "torvik": "High Point",
+    "sports_ref": "High Point",
+    "cbbpy": "high-point"
+  },
+  "Hofstra": {
+    "canonical": "Hofstra",
+    "torvik": "Hofstra",
+    "sports_ref": "Hofstra",
+    "cbbpy": "hofstra"
+  },
+  "Holy Cross": {
+    "canonical": "Holy Cross",
+    "torvik": "Holy Cross",
+    "sports_ref": "Holy Cross",
+    "cbbpy": "holy-cross"
+  },
+  "Horz": {
+    "canonical": "Horz",
+    "torvik": "Horz",
+    "sports_ref": "Horz",
+    "cbbpy": "horz"
+  },
+  "Houston Baptist": {
+    "canonical": "Houston Baptist",
+    "torvik": "Houston Baptist",
+    "sports_ref": "Houston Baptist",
+    "cbbpy": "houston-baptist"
+  },
+  "Houston Christian": {
+    "canonical": "Houston Christian",
+    "torvik": "Houston Christian",
+    "sports_ref": "Houston Christian",
+    "cbbpy": "houston-christian"
+  },
+  "Howard": {
+    "canonical": "Howard",
+    "torvik": "Howard",
+    "sports_ref": "Howard",
+    "cbbpy": "howard"
+  },
+  "IPFW": {
+    "canonical": "IPFW",
+    "torvik": "IPFW",
+    "sports_ref": "IPFW",
+    "cbbpy": "ipfw"
+  },
+  "IU Indy": {
+    "canonical": "IU Indy",
+    "torvik": "IU Indy",
+    "sports_ref": "IU Indy",
+    "cbbpy": "iu-indy"
+  },
+  "IUPUI": {
+    "canonical": "IUPUI",
+    "torvik": "IUPUI",
+    "sports_ref": "IUPUI",
+    "cbbpy": "iupui"
+  },
+  "Idaho": {
+    "canonical": "Idaho",
+    "torvik": "Idaho",
+    "sports_ref": "Idaho",
+    "cbbpy": "idaho"
+  },
+  "Idaho St.": {
+    "canonical": "Idaho St.",
+    "torvik": "Idaho St.",
+    "sports_ref": "Idaho St.",
+    "cbbpy": "idaho-st"
+  },
+  "Illinois Chicago": {
+    "canonical": "Illinois Chicago",
+    "torvik": "Illinois Chicago",
+    "sports_ref": "Illinois Chicago",
+    "cbbpy": "illinois-chicago"
+  },
+  "Illinois St.": {
+    "canonical": "Illinois St.",
+    "torvik": "Illinois St.",
+    "sports_ref": "Illinois St.",
+    "cbbpy": "illinois-st"
+  },
+  "Incarnate Word": {
+    "canonical": "Incarnate Word",
+    "torvik": "Incarnate Word",
+    "sports_ref": "Incarnate Word",
+    "cbbpy": "incarnate-word"
+  },
+  "Indiana St.": {
+    "canonical": "Indiana St.",
+    "torvik": "Indiana St.",
+    "sports_ref": "Indiana St.",
+    "cbbpy": "indiana-st"
+  },
+  "Iona": {
+    "canonical": "Iona",
+    "torvik": "Iona",
+    "sports_ref": "Iona",
+    "cbbpy": "iona"
+  },
+  "Ivy": {
+    "canonical": "Ivy",
+    "torvik": "Ivy",
+    "sports_ref": "Ivy",
+    "cbbpy": "ivy"
+  },
+  "Jackson St.": {
+    "canonical": "Jackson St.",
+    "torvik": "Jackson St.",
+    "sports_ref": "Jackson St.",
+    "cbbpy": "jackson-st"
+  },
+  "Jacksonville": {
+    "canonical": "Jacksonville",
+    "torvik": "Jacksonville",
+    "sports_ref": "Jacksonville",
+    "cbbpy": "jacksonville"
+  },
+  "Jacksonville St.": {
+    "canonical": "Jacksonville St.",
+    "torvik": "Jacksonville St.",
+    "sports_ref": "Jacksonville St.",
+    "cbbpy": "jacksonville-st"
+  },
+  "James Madison": {
+    "canonical": "James Madison",
+    "torvik": "James Madison",
+    "sports_ref": "James Madison",
+    "cbbpy": "james-madison"
+  },
+  "Kennesaw St.": {
+    "canonical": "Kennesaw St.",
+    "torvik": "Kennesaw St.",
+    "sports_ref": "Kennesaw St.",
+    "cbbpy": "kennesaw-st"
+  },
+  "Kent St.": {
+    "canonical": "Kent St.",
+    "torvik": "Kent St.",
+    "sports_ref": "Kent St.",
+    "cbbpy": "kent-st"
+  },
+  "LIU": {
+    "canonical": "LIU",
+    "torvik": "LIU",
+    "sports_ref": "LIU",
+    "cbbpy": "liu"
+  },
+  "LIU Brooklyn": {
+    "canonical": "LIU Brooklyn",
+    "torvik": "LIU Brooklyn",
+    "sports_ref": "LIU Brooklyn",
+    "cbbpy": "liu-brooklyn"
+  },
+  "La Salle": {
+    "canonical": "La Salle",
+    "torvik": "La Salle",
+    "sports_ref": "La Salle",
+    "cbbpy": "la-salle"
+  },
+  "Lafayette": {
+    "canonical": "Lafayette",
+    "torvik": "Lafayette",
+    "sports_ref": "Lafayette",
+    "cbbpy": "lafayette"
+  },
+  "Lamar": {
+    "canonical": "Lamar",
+    "torvik": "Lamar",
+    "sports_ref": "Lamar",
+    "cbbpy": "lamar"
+  },
+  "Le Moyne": {
+    "canonical": "Le Moyne",
+    "torvik": "Le Moyne",
+    "sports_ref": "Le Moyne",
+    "cbbpy": "le-moyne"
+  },
+  "Lehigh": {
+    "canonical": "Lehigh",
+    "torvik": "Lehigh",
+    "sports_ref": "Lehigh",
+    "cbbpy": "lehigh"
+  },
+  "Liberty": {
+    "canonical": "Liberty",
+    "torvik": "Liberty",
+    "sports_ref": "Liberty",
+    "cbbpy": "liberty"
+  },
+  "Lindenwood": {
+    "canonical": "Lindenwood",
+    "torvik": "Lindenwood",
+    "sports_ref": "Lindenwood",
+    "cbbpy": "lindenwood"
+  },
+  "Lipscomb": {
+    "canonical": "Lipscomb",
+    "torvik": "Lipscomb",
+    "sports_ref": "Lipscomb",
+    "cbbpy": "lipscomb"
+  },
+  "Little Rock": {
+    "canonical": "Little Rock",
+    "torvik": "Little Rock",
+    "sports_ref": "Little Rock",
+    "cbbpy": "little-rock"
+  },
+  "Long Beach St.": {
+    "canonical": "Long Beach St.",
+    "torvik": "Long Beach St.",
+    "sports_ref": "Long Beach St.",
+    "cbbpy": "long-beach-st"
+  },
+  "Longwood": {
+    "canonical": "Longwood",
+    "torvik": "Longwood",
+    "sports_ref": "Longwood",
+    "cbbpy": "longwood"
+  },
+  "Louisiana": {
+    "canonical": "Louisiana",
+    "torvik": "Louisiana",
+    "sports_ref": "Louisiana",
+    "cbbpy": "louisiana"
+  },
+  "Louisiana Lafayette": {
+    "canonical": "Louisiana Lafayette",
+    "torvik": "Louisiana Lafayette",
+    "sports_ref": "Louisiana Lafayette",
+    "cbbpy": "louisiana-lafayette"
+  },
+  "Louisiana Monroe": {
+    "canonical": "Louisiana Monroe",
+    "torvik": "Louisiana Monroe",
+    "sports_ref": "Louisiana Monroe",
+    "cbbpy": "louisiana-monroe"
+  },
+  "Louisiana Tech": {
+    "canonical": "Louisiana Tech",
+    "torvik": "Louisiana Tech",
+    "sports_ref": "Louisiana Tech",
+    "cbbpy": "louisiana-tech"
+  },
+  "Loyola Chicago": {
+    "canonical": "Loyola Chicago",
+    "torvik": "Loyola Chicago",
+    "sports_ref": "Loyola Chicago",
+    "cbbpy": "loyola-chicago"
+  },
+  "Loyola MD": {
+    "canonical": "Loyola MD",
+    "torvik": "Loyola MD",
+    "sports_ref": "Loyola MD",
+    "cbbpy": "loyola-md"
+  },
+  "Loyola Marymount": {
+    "canonical": "Loyola Marymount",
+    "torvik": "Loyola Marymount",
+    "sports_ref": "Loyola Marymount",
+    "cbbpy": "loyola-marymount"
+  },
+  "MAAC": {
+    "canonical": "MAAC",
+    "torvik": "MAAC",
+    "sports_ref": "MAAC",
+    "cbbpy": "maac"
+  },
+  "MAC": {
+    "canonical": "MAC",
+    "torvik": "MAC",
+    "sports_ref": "MAC",
+    "cbbpy": "mac"
+  },
+  "MEAC": {
+    "canonical": "MEAC",
+    "torvik": "MEAC",
+    "sports_ref": "MEAC",
+    "cbbpy": "meac"
+  },
+  "MVC": {
+    "canonical": "MVC",
+    "torvik": "MVC",
+    "sports_ref": "MVC",
+    "cbbpy": "mvc"
+  },
+  "MWC": {
+    "canonical": "MWC",
+    "torvik": "MWC",
+    "sports_ref": "MWC",
+    "cbbpy": "mwc"
+  },
+  "Maine": {
+    "canonical": "Maine",
+    "torvik": "Maine",
+    "sports_ref": "Maine",
+    "cbbpy": "maine"
+  },
+  "Manhattan": {
+    "canonical": "Manhattan",
+    "torvik": "Manhattan",
+    "sports_ref": "Manhattan",
+    "cbbpy": "manhattan"
+  },
+  "Marist": {
+    "canonical": "Marist",
+    "torvik": "Marist",
+    "sports_ref": "Marist",
+    "cbbpy": "marist"
+  },
+  "Marshall": {
+    "canonical": "Marshall",
+    "torvik": "Marshall",
+    "sports_ref": "Marshall",
+    "cbbpy": "marshall"
+  },
+  "Maryland Eastern Shore": {
+    "canonical": "Maryland Eastern Shore",
+    "torvik": "Maryland Eastern Shore",
+    "sports_ref": "Maryland Eastern Shore",
+    "cbbpy": "maryland-eastern-shore"
+  },
+  "Massachusetts": {
+    "canonical": "Massachusetts",
+    "torvik": "Massachusetts",
+    "sports_ref": "Massachusetts",
+    "cbbpy": "massachusetts"
+  },
+  "McNeese St.": {
+    "canonical": "McNeese St.",
+    "torvik": "McNeese St.",
+    "sports_ref": "McNeese St.",
+    "cbbpy": "mcneese-st"
+  },
+  "Mercer": {
+    "canonical": "Mercer",
+    "torvik": "Mercer",
+    "sports_ref": "Mercer",
+    "cbbpy": "mercer"
+  },
+  "Mercyhurst": {
+    "canonical": "Mercyhurst",
+    "torvik": "Mercyhurst",
+    "sports_ref": "Mercyhurst",
+    "cbbpy": "mercyhurst"
+  },
+  "Merrimack": {
+    "canonical": "Merrimack",
+    "torvik": "Merrimack",
+    "sports_ref": "Merrimack",
+    "cbbpy": "merrimack"
+  },
+  "Miami FL": {
+    "canonical": "Miami FL",
+    "torvik": "Miami FL",
+    "sports_ref": "Miami FL",
+    "cbbpy": "miami-fl"
+  },
+  "Miami OH": {
+    "canonical": "Miami OH",
+    "torvik": "Miami OH",
+    "sports_ref": "Miami OH",
+    "cbbpy": "miami-oh"
+  },
+  "Middle Tennessee": {
+    "canonical": "Middle Tennessee",
+    "torvik": "Middle Tennessee",
+    "sports_ref": "Middle Tennessee",
+    "cbbpy": "middle-tennessee"
+  },
+  "Milwaukee": {
+    "canonical": "Milwaukee",
+    "torvik": "Milwaukee",
+    "sports_ref": "Milwaukee",
+    "cbbpy": "milwaukee"
+  },
+  "Mississippi": {
+    "canonical": "Mississippi",
+    "torvik": "Mississippi",
+    "sports_ref": "Mississippi",
+    "cbbpy": "mississippi"
+  },
+  "Mississippi Valley St.": {
+    "canonical": "Mississippi Valley St.",
+    "torvik": "Mississippi Valley St.",
+    "sports_ref": "Mississippi Valley St.",
+    "cbbpy": "mississippi-valley-st"
+  },
+  "Missouri St.": {
+    "canonical": "Missouri St.",
+    "torvik": "Missouri St.",
+    "sports_ref": "Missouri St.",
+    "cbbpy": "missouri-st"
+  },
+  "Monmouth": {
+    "canonical": "Monmouth",
+    "torvik": "Monmouth",
+    "sports_ref": "Monmouth",
+    "cbbpy": "monmouth"
+  },
+  "Montana": {
+    "canonical": "Montana",
+    "torvik": "Montana",
+    "sports_ref": "Montana",
+    "cbbpy": "montana"
+  },
+  "Montana St.": {
+    "canonical": "Montana St.",
+    "torvik": "Montana St.",
+    "sports_ref": "Montana St.",
+    "cbbpy": "montana-st"
+  },
+  "Morehead St.": {
+    "canonical": "Morehead St.",
+    "torvik": "Morehead St.",
+    "sports_ref": "Morehead St.",
+    "cbbpy": "morehead-st"
+  },
+  "Morgan St.": {
+    "canonical": "Morgan St.",
+    "torvik": "Morgan St.",
+    "sports_ref": "Morgan St.",
+    "cbbpy": "morgan-st"
+  },
+  "Mount St. Mary's": {
+    "canonical": "Mount St. Mary's",
+    "torvik": "Mount St. Mary's",
+    "sports_ref": "Mount St. Mary's",
+    "cbbpy": "mount-st-mary-s"
+  },
+  "N.C. State": {
+    "canonical": "N.C. State",
+    "torvik": "N.C. State",
+    "sports_ref": "N.C. State",
+    "cbbpy": "n-c-state"
+  },
+  "NEC": {
+    "canonical": "NEC",
+    "torvik": "NEC",
+    "sports_ref": "NEC",
+    "cbbpy": "nec"
+  },
+  "NJIT": {
+    "canonical": "NJIT",
+    "torvik": "NJIT",
+    "sports_ref": "NJIT",
+    "cbbpy": "njit"
+  },
+  "Navy": {
+    "canonical": "Navy",
+    "torvik": "Navy",
+    "sports_ref": "Navy",
+    "cbbpy": "navy"
+  },
+  "Nebraska": {
+    "canonical": "Nebraska",
+    "torvik": "Nebraska",
+    "sports_ref": "Nebraska",
+    "cbbpy": "nebraska"
+  },
+  "Nebraska Omaha": {
+    "canonical": "Nebraska Omaha",
+    "torvik": "Nebraska Omaha",
+    "sports_ref": "Nebraska Omaha",
+    "cbbpy": "nebraska-omaha"
+  },
+  "Nevada": {
+    "canonical": "Nevada",
+    "torvik": "Nevada",
+    "sports_ref": "Nevada",
+    "cbbpy": "nevada"
+  },
+  "New Hampshire": {
+    "canonical": "New Hampshire",
+    "torvik": "New Hampshire",
+    "sports_ref": "New Hampshire",
+    "cbbpy": "new-hampshire"
+  },
+  "New Mexico": {
+    "canonical": "New Mexico",
+    "torvik": "New Mexico",
+    "sports_ref": "New Mexico",
+    "cbbpy": "new-mexico"
+  },
+  "New Mexico St.": {
+    "canonical": "New Mexico St.",
+    "torvik": "New Mexico St.",
+    "sports_ref": "New Mexico St.",
+    "cbbpy": "new-mexico-st"
+  },
+  "New Orleans": {
+    "canonical": "New Orleans",
+    "torvik": "New Orleans",
+    "sports_ref": "New Orleans",
+    "cbbpy": "new-orleans"
+  },
+  "Niagara": {
+    "canonical": "Niagara",
+    "torvik": "Niagara",
+    "sports_ref": "Niagara",
+    "cbbpy": "niagara"
+  },
+  "Nicholls St.": {
+    "canonical": "Nicholls St.",
+    "torvik": "Nicholls St.",
+    "sports_ref": "Nicholls St.",
+    "cbbpy": "nicholls-st"
+  },
+  "Norfolk St.": {
+    "canonical": "Norfolk St.",
+    "torvik": "Norfolk St.",
+    "sports_ref": "Norfolk St.",
+    "cbbpy": "norfolk-st"
+  },
+  "North Alabama": {
+    "canonical": "North Alabama",
+    "torvik": "North Alabama",
+    "sports_ref": "North Alabama",
+    "cbbpy": "north-alabama"
+  },
+  "North Carolina A&T": {
+    "canonical": "North Carolina A&T",
+    "torvik": "North Carolina A&T",
+    "sports_ref": "North Carolina A&T",
+    "cbbpy": "north-carolina-a-t"
+  },
+  "North Carolina Central": {
+    "canonical": "North Carolina Central",
+    "torvik": "North Carolina Central",
+    "sports_ref": "North Carolina Central",
+    "cbbpy": "north-carolina-central"
+  },
+  "North Carolina St.": {
+    "canonical": "North Carolina St.",
+    "torvik": "North Carolina St.",
+    "sports_ref": "North Carolina St.",
+    "cbbpy": "north-carolina-st"
+  },
+  "North Dakota": {
+    "canonical": "North Dakota",
+    "torvik": "North Dakota",
+    "sports_ref": "North Dakota",
+    "cbbpy": "north-dakota"
+  },
+  "North Dakota St.": {
+    "canonical": "North Dakota St.",
+    "torvik": "North Dakota St.",
+    "sports_ref": "North Dakota St.",
+    "cbbpy": "north-dakota-st"
+  },
+  "North Florida": {
+    "canonical": "North Florida",
+    "torvik": "North Florida",
+    "sports_ref": "North Florida",
+    "cbbpy": "north-florida"
+  },
+  "North Texas": {
+    "canonical": "North Texas",
+    "torvik": "North Texas",
+    "sports_ref": "North Texas",
+    "cbbpy": "north-texas"
+  },
+  "Northeastern": {
+    "canonical": "Northeastern",
+    "torvik": "Northeastern",
+    "sports_ref": "Northeastern",
+    "cbbpy": "northeastern"
+  },
+  "Northern Arizona": {
+    "canonical": "Northern Arizona",
+    "torvik": "Northern Arizona",
+    "sports_ref": "Northern Arizona",
+    "cbbpy": "northern-arizona"
+  },
+  "Northern Colorado": {
+    "canonical": "Northern Colorado",
+    "torvik": "Northern Colorado",
+    "sports_ref": "Northern Colorado",
+    "cbbpy": "northern-colorado"
+  },
+  "Northern Illinois": {
+    "canonical": "Northern Illinois",
+    "torvik": "Northern Illinois",
+    "sports_ref": "Northern Illinois",
+    "cbbpy": "northern-illinois"
+  },
+  "Northern Iowa": {
+    "canonical": "Northern Iowa",
+    "torvik": "Northern Iowa",
+    "sports_ref": "Northern Iowa",
+    "cbbpy": "northern-iowa"
+  },
+  "Northern Kentucky": {
+    "canonical": "Northern Kentucky",
+    "torvik": "Northern Kentucky",
+    "sports_ref": "Northern Kentucky",
+    "cbbpy": "northern-kentucky"
+  },
+  "Northwestern": {
+    "canonical": "Northwestern",
+    "torvik": "Northwestern",
+    "sports_ref": "Northwestern",
+    "cbbpy": "northwestern"
+  },
+  "Northwestern St.": {
+    "canonical": "Northwestern St.",
+    "torvik": "Northwestern St.",
+    "sports_ref": "Northwestern St.",
+    "cbbpy": "northwestern-st"
+  },
+  "OVC": {
+    "canonical": "OVC",
+    "torvik": "OVC",
+    "sports_ref": "OVC",
+    "cbbpy": "ovc"
+  },
+  "Oakland": {
+    "canonical": "Oakland",
+    "torvik": "Oakland",
+    "sports_ref": "Oakland",
+    "cbbpy": "oakland"
+  },
+  "Ohio": {
+    "canonical": "Ohio",
+    "torvik": "Ohio",
+    "sports_ref": "Ohio",
+    "cbbpy": "ohio"
+  },
+  "Old Dominion": {
+    "canonical": "Old Dominion",
+    "torvik": "Old Dominion",
+    "sports_ref": "Old Dominion",
+    "cbbpy": "old-dominion"
+  },
+  "Oral Roberts": {
+    "canonical": "Oral Roberts",
+    "torvik": "Oral Roberts",
+    "sports_ref": "Oral Roberts",
+    "cbbpy": "oral-roberts"
+  },
+  "Oregon St.": {
+    "canonical": "Oregon St.",
+    "torvik": "Oregon St.",
+    "sports_ref": "Oregon St.",
+    "cbbpy": "oregon-st"
+  },
+  "P10": {
+    "canonical": "P10",
+    "torvik": "P10",
+    "sports_ref": "P10",
+    "cbbpy": "p10"
+  },
+  "Pacific": {
+    "canonical": "Pacific",
+    "torvik": "Pacific",
+    "sports_ref": "Pacific",
+    "cbbpy": "pacific"
+  },
+  "Pat": {
+    "canonical": "Pat",
+    "torvik": "Pat",
+    "sports_ref": "Pat",
+    "cbbpy": "pat"
+  },
+  "Penn": {
+    "canonical": "Penn",
+    "torvik": "Penn",
+    "sports_ref": "Penn",
+    "cbbpy": "penn"
+  },
+  "Pepperdine": {
+    "canonical": "Pepperdine",
+    "torvik": "Pepperdine",
+    "sports_ref": "Pepperdine",
+    "cbbpy": "pepperdine"
+  },
+  "Pittsburgh": {
+    "canonical": "Pittsburgh",
+    "torvik": "Pittsburgh",
+    "sports_ref": "Pittsburgh",
+    "cbbpy": "pittsburgh"
+  },
+  "Portland": {
+    "canonical": "Portland",
+    "torvik": "Portland",
+    "sports_ref": "Portland",
+    "cbbpy": "portland"
+  },
+  "Portland St.": {
+    "canonical": "Portland St.",
+    "torvik": "Portland St.",
+    "sports_ref": "Portland St.",
+    "cbbpy": "portland-st"
+  },
+  "Prairie View A&M": {
+    "canonical": "Prairie View A&M",
+    "torvik": "Prairie View A&M",
+    "sports_ref": "Prairie View A&M",
+    "cbbpy": "prairie-view-a-m"
+  },
+  "Presbyterian": {
+    "canonical": "Presbyterian",
+    "torvik": "Presbyterian",
+    "sports_ref": "Presbyterian",
+    "cbbpy": "presbyterian"
+  },
+  "Princeton": {
+    "canonical": "Princeton",
+    "torvik": "Princeton",
+    "sports_ref": "Princeton",
+    "cbbpy": "princeton"
+  },
+  "Providence": {
+    "canonical": "Providence",
+    "torvik": "Providence",
+    "sports_ref": "Providence",
+    "cbbpy": "providence"
+  },
+  "Purdue Fort Wayne": {
+    "canonical": "Purdue Fort Wayne",
+    "torvik": "Purdue Fort Wayne",
+    "sports_ref": "Purdue Fort Wayne",
+    "cbbpy": "purdue-fort-wayne"
+  },
+  "Queens": {
+    "canonical": "Queens",
+    "torvik": "Queens",
+    "sports_ref": "Queens",
+    "cbbpy": "queens"
+  },
+  "Quinnipiac": {
+    "canonical": "Quinnipiac",
+    "torvik": "Quinnipiac",
+    "sports_ref": "Quinnipiac",
+    "cbbpy": "quinnipiac"
+  },
+  "Radford": {
+    "canonical": "Radford",
+    "torvik": "Radford",
+    "sports_ref": "Radford",
+    "cbbpy": "radford"
+  },
+  "Rhode Island": {
+    "canonical": "Rhode Island",
+    "torvik": "Rhode Island",
+    "sports_ref": "Rhode Island",
+    "cbbpy": "rhode-island"
+  },
+  "Rice": {
+    "canonical": "Rice",
+    "torvik": "Rice",
+    "sports_ref": "Rice",
+    "cbbpy": "rice"
+  },
+  "Richmond": {
+    "canonical": "Richmond",
+    "torvik": "Richmond",
+    "sports_ref": "Richmond",
+    "cbbpy": "richmond"
+  },
+  "Rider": {
+    "canonical": "Rider",
+    "torvik": "Rider",
+    "sports_ref": "Rider",
+    "cbbpy": "rider"
+  },
+  "Robert Morris": {
+    "canonical": "Robert Morris",
+    "torvik": "Robert Morris",
+    "sports_ref": "Robert Morris",
+    "cbbpy": "robert-morris"
+  },
+  "Rutgers": {
+    "canonical": "Rutgers",
+    "torvik": "Rutgers",
+    "sports_ref": "Rutgers",
+    "cbbpy": "rutgers"
+  },
+  "SB": {
+    "canonical": "SB",
+    "torvik": "SB",
+    "sports_ref": "SB",
+    "cbbpy": "sb"
+  },
+  "SC": {
+    "canonical": "SC",
+    "torvik": "SC",
+    "sports_ref": "SC",
+    "cbbpy": "sc"
+  },
+  "SEC": {
+    "canonical": "SEC",
+    "torvik": "SEC",
+    "sports_ref": "SEC",
+    "cbbpy": "sec"
+  },
+  "SIU Edwardsville": {
+    "canonical": "SIU Edwardsville",
+    "torvik": "SIU Edwardsville",
+    "sports_ref": "SIU Edwardsville",
+    "cbbpy": "siu-edwardsville"
+  },
+  "SMU": {
+    "canonical": "SMU",
+    "torvik": "SMU",
+    "sports_ref": "SMU",
+    "cbbpy": "smu"
+  },
+  "SWAC": {
+    "canonical": "SWAC",
+    "torvik": "SWAC",
+    "sports_ref": "SWAC",
+    "cbbpy": "swac"
+  },
+  "Sacramento St.": {
+    "canonical": "Sacramento St.",
+    "torvik": "Sacramento St.",
+    "sports_ref": "Sacramento St.",
+    "cbbpy": "sacramento-st"
+  },
+  "Sacred Heart": {
+    "canonical": "Sacred Heart",
+    "torvik": "Sacred Heart",
+    "sports_ref": "Sacred Heart",
+    "cbbpy": "sacred-heart"
+  },
+  "Saint Francis": {
+    "canonical": "Saint Francis",
+    "torvik": "Saint Francis",
+    "sports_ref": "Saint Francis",
+    "cbbpy": "saint-francis"
+  },
+  "Saint Joseph's": {
+    "canonical": "Saint Joseph's",
+    "torvik": "Saint Joseph's",
+    "sports_ref": "Saint Joseph's",
+    "cbbpy": "saint-joseph-s"
+  },
+  "Saint Louis": {
+    "canonical": "Saint Louis",
+    "torvik": "Saint Louis",
+    "sports_ref": "Saint Louis",
+    "cbbpy": "saint-louis"
+  },
+  "Saint Peter's": {
+    "canonical": "Saint Peter's",
+    "torvik": "Saint Peter's",
+    "sports_ref": "Saint Peter's",
+    "cbbpy": "saint-peter-s"
+  },
+  "Sam Houston St.": {
+    "canonical": "Sam Houston St.",
+    "torvik": "Sam Houston St.",
+    "sports_ref": "Sam Houston St.",
+    "cbbpy": "sam-houston-st"
+  },
+  "Samford": {
+    "canonical": "Samford",
+    "torvik": "Samford",
+    "sports_ref": "Samford",
+    "cbbpy": "samford"
+  },
+  "San Diego": {
+    "canonical": "San Diego",
+    "torvik": "San Diego",
+    "sports_ref": "San Diego",
+    "cbbpy": "san-diego"
+  },
+  "San Francisco": {
+    "canonical": "San Francisco",
+    "torvik": "San Francisco",
+    "sports_ref": "San Francisco",
+    "cbbpy": "san-francisco"
+  },
+  "San Jose St.": {
+    "canonical": "San Jose St.",
+    "torvik": "San Jose St.",
+    "sports_ref": "San Jose St.",
+    "cbbpy": "san-jose-st"
+  },
+  "Santa Clara": {
+    "canonical": "Santa Clara",
+    "torvik": "Santa Clara",
+    "sports_ref": "Santa Clara",
+    "cbbpy": "santa-clara"
+  },
+  "Savannah St.": {
+    "canonical": "Savannah St.",
+    "torvik": "Savannah St.",
+    "sports_ref": "Savannah St.",
+    "cbbpy": "savannah-st"
+  },
+  "Seattle": {
+    "canonical": "Seattle",
+    "torvik": "Seattle",
+    "sports_ref": "Seattle",
+    "cbbpy": "seattle"
+  },
+  "Siena": {
+    "canonical": "Siena",
+    "torvik": "Siena",
+    "sports_ref": "Siena",
+    "cbbpy": "siena"
+  },
+  "Slnd": {
+    "canonical": "Slnd",
+    "torvik": "Slnd",
+    "sports_ref": "Slnd",
+    "cbbpy": "slnd"
+  },
+  "South Alabama": {
+    "canonical": "South Alabama",
+    "torvik": "South Alabama",
+    "sports_ref": "South Alabama",
+    "cbbpy": "south-alabama"
+  },
+  "South Carolina St.": {
+    "canonical": "South Carolina St.",
+    "torvik": "South Carolina St.",
+    "sports_ref": "South Carolina St.",
+    "cbbpy": "south-carolina-st"
+  },
+  "South Dakota": {
+    "canonical": "South Dakota",
+    "torvik": "South Dakota",
+    "sports_ref": "South Dakota",
+    "cbbpy": "south-dakota"
+  },
+  "South Dakota St.": {
+    "canonical": "South Dakota St.",
+    "torvik": "South Dakota St.",
+    "sports_ref": "South Dakota St.",
+    "cbbpy": "south-dakota-st"
+  },
+  "South Florida": {
+    "canonical": "South Florida",
+    "torvik": "South Florida",
+    "sports_ref": "South Florida",
+    "cbbpy": "south-florida"
+  },
+  "Southeast Missouri St.": {
+    "canonical": "Southeast Missouri St.",
+    "torvik": "Southeast Missouri St.",
+    "sports_ref": "Southeast Missouri St.",
+    "cbbpy": "southeast-missouri-st"
+  },
+  "Southeastern Louisiana": {
+    "canonical": "Southeastern Louisiana",
+    "torvik": "Southeastern Louisiana",
+    "sports_ref": "Southeastern Louisiana",
+    "cbbpy": "southeastern-louisiana"
+  },
+  "Southern": {
+    "canonical": "Southern",
+    "torvik": "Southern",
+    "sports_ref": "Southern",
+    "cbbpy": "southern"
+  },
+  "Southern Illinois": {
+    "canonical": "Southern Illinois",
+    "torvik": "Southern Illinois",
+    "sports_ref": "Southern Illinois",
+    "cbbpy": "southern-illinois"
+  },
+  "Southern Indiana": {
+    "canonical": "Southern Indiana",
+    "torvik": "Southern Indiana",
+    "sports_ref": "Southern Indiana",
+    "cbbpy": "southern-indiana"
+  },
+  "Southern Miss": {
+    "canonical": "Southern Miss",
+    "torvik": "Southern Miss",
+    "sports_ref": "Southern Miss",
+    "cbbpy": "southern-miss"
+  },
+  "Southern Utah": {
+    "canonical": "Southern Utah",
+    "torvik": "Southern Utah",
+    "sports_ref": "Southern Utah",
+    "cbbpy": "southern-utah"
+  },
+  "St. Bonaventure": {
+    "canonical": "St. Bonaventure",
+    "torvik": "St. Bonaventure",
+    "sports_ref": "St. Bonaventure",
+    "cbbpy": "st-bonaventure"
+  },
+  "St. Francis NY": {
+    "canonical": "St. Francis NY",
+    "torvik": "St. Francis NY",
+    "sports_ref": "St. Francis NY",
+    "cbbpy": "st-francis-ny"
+  },
+  "St. Francis PA": {
+    "canonical": "St. Francis PA",
+    "torvik": "St. Francis PA",
+    "sports_ref": "St. Francis PA",
+    "cbbpy": "st-francis-pa"
+  },
+  "St. Thomas": {
+    "canonical": "St. Thomas",
+    "torvik": "St. Thomas",
+    "sports_ref": "St. Thomas",
+    "cbbpy": "st-thomas"
+  },
+  "Stanford": {
+    "canonical": "Stanford",
+    "torvik": "Stanford",
+    "sports_ref": "Stanford",
+    "cbbpy": "stanford"
+  },
+  "Stephen F. Austin": {
+    "canonical": "Stephen F. Austin",
+    "torvik": "Stephen F. Austin",
+    "sports_ref": "Stephen F. Austin",
+    "cbbpy": "stephen-f-austin"
+  },
+  "Stetson": {
+    "canonical": "Stetson",
+    "torvik": "Stetson",
+    "sports_ref": "Stetson",
+    "cbbpy": "stetson"
+  },
+  "Stonehill": {
+    "canonical": "Stonehill",
+    "torvik": "Stonehill",
+    "sports_ref": "Stonehill",
+    "cbbpy": "stonehill"
+  },
+  "Stony Brook": {
+    "canonical": "Stony Brook",
+    "torvik": "Stony Brook",
+    "sports_ref": "Stony Brook",
+    "cbbpy": "stony-brook"
+  },
+  "Sum": {
+    "canonical": "Sum",
+    "torvik": "Sum",
+    "sports_ref": "Sum",
+    "cbbpy": "sum"
+  },
+  "Syracuse": {
+    "canonical": "Syracuse",
+    "torvik": "Syracuse",
+    "sports_ref": "Syracuse",
+    "cbbpy": "syracuse"
+  },
+  "TCU": {
+    "canonical": "TCU",
+    "torvik": "TCU",
+    "sports_ref": "TCU",
+    "cbbpy": "tcu"
+  },
+  "Tarleton St.": {
+    "canonical": "Tarleton St.",
+    "torvik": "Tarleton St.",
+    "sports_ref": "Tarleton St.",
+    "cbbpy": "tarleton-st"
+  },
+  "Temple": {
+    "canonical": "Temple",
+    "torvik": "Temple",
+    "sports_ref": "Temple",
+    "cbbpy": "temple"
+  },
+  "Tennessee Martin": {
+    "canonical": "Tennessee Martin",
+    "torvik": "Tennessee Martin",
+    "sports_ref": "Tennessee Martin",
+    "cbbpy": "tennessee-martin"
+  },
+  "Tennessee St.": {
+    "canonical": "Tennessee St.",
+    "torvik": "Tennessee St.",
+    "sports_ref": "Tennessee St.",
+    "cbbpy": "tennessee-st"
+  },
+  "Tennessee Tech": {
+    "canonical": "Tennessee Tech",
+    "torvik": "Tennessee Tech",
+    "sports_ref": "Tennessee Tech",
+    "cbbpy": "tennessee-tech"
+  },
+  "Texas A&M Commerce": {
+    "canonical": "Texas A&M Commerce",
+    "torvik": "Texas A&M Commerce",
+    "sports_ref": "Texas A&M Commerce",
+    "cbbpy": "texas-a-m-commerce"
+  },
+  "Texas A&M Corpus Chris": {
+    "canonical": "Texas A&M Corpus Chris",
+    "torvik": "Texas A&M Corpus Chris",
+    "sports_ref": "Texas A&M Corpus Chris",
+    "cbbpy": "texas-a-m-corpus-chris"
+  },
+  "Texas Southern": {
+    "canonical": "Texas Southern",
+    "torvik": "Texas Southern",
+    "sports_ref": "Texas Southern",
+    "cbbpy": "texas-southern"
+  },
+  "Texas St.": {
+    "canonical": "Texas St.",
+    "torvik": "Texas St.",
+    "sports_ref": "Texas St.",
+    "cbbpy": "texas-st"
+  },
+  "The Citadel": {
+    "canonical": "The Citadel",
+    "torvik": "The Citadel",
+    "sports_ref": "The Citadel",
+    "cbbpy": "the-citadel"
+  },
+  "Toledo": {
+    "canonical": "Toledo",
+    "torvik": "Toledo",
+    "sports_ref": "Toledo",
+    "cbbpy": "toledo"
+  },
+  "Towson": {
+    "canonical": "Towson",
+    "torvik": "Towson",
+    "sports_ref": "Towson",
+    "cbbpy": "towson"
+  },
+  "Troy": {
+    "canonical": "Troy",
+    "torvik": "Troy",
+    "sports_ref": "Troy",
+    "cbbpy": "troy"
+  },
+  "Tulane": {
+    "canonical": "Tulane",
+    "torvik": "Tulane",
+    "sports_ref": "Tulane",
+    "cbbpy": "tulane"
+  },
+  "Tulsa": {
+    "canonical": "Tulsa",
+    "torvik": "Tulsa",
+    "sports_ref": "Tulsa",
+    "cbbpy": "tulsa"
+  },
+  "UAB": {
+    "canonical": "UAB",
+    "torvik": "UAB",
+    "sports_ref": "UAB",
+    "cbbpy": "uab"
+  },
+  "UC Davis": {
+    "canonical": "UC Davis",
+    "torvik": "UC Davis",
+    "sports_ref": "UC Davis",
+    "cbbpy": "uc-davis"
+  },
+  "UC Irvine": {
+    "canonical": "UC Irvine",
+    "torvik": "UC Irvine",
+    "sports_ref": "UC Irvine",
+    "cbbpy": "uc-irvine"
+  },
+  "UC Riverside": {
+    "canonical": "UC Riverside",
+    "torvik": "UC Riverside",
+    "sports_ref": "UC Riverside",
+    "cbbpy": "uc-riverside"
+  },
+  "UC San Diego": {
+    "canonical": "UC San Diego",
+    "torvik": "UC San Diego",
+    "sports_ref": "UC San Diego",
+    "cbbpy": "uc-san-diego"
+  },
+  "UC Santa Barbara": {
+    "canonical": "UC Santa Barbara",
+    "torvik": "UC Santa Barbara",
+    "sports_ref": "UC Santa Barbara",
+    "cbbpy": "uc-santa-barbara"
+  },
+  "UCF": {
+    "canonical": "UCF",
+    "torvik": "UCF",
+    "sports_ref": "UCF",
+    "cbbpy": "ucf"
+  },
+  "UMBC": {
+    "canonical": "UMBC",
+    "torvik": "UMBC",
+    "sports_ref": "UMBC",
+    "cbbpy": "umbc"
+  },
+  "UMKC": {
+    "canonical": "UMKC",
+    "torvik": "UMKC",
+    "sports_ref": "UMKC",
+    "cbbpy": "umkc"
+  },
+  "UMass Lowell": {
+    "canonical": "UMass Lowell",
+    "torvik": "UMass Lowell",
+    "sports_ref": "UMass Lowell",
+    "cbbpy": "umass-lowell"
+  },
+  "UNC Asheville": {
+    "canonical": "UNC Asheville",
+    "torvik": "UNC Asheville",
+    "sports_ref": "UNC Asheville",
+    "cbbpy": "unc-asheville"
+  },
+  "UNC Greensboro": {
+    "canonical": "UNC Greensboro",
+    "torvik": "UNC Greensboro",
+    "sports_ref": "UNC Greensboro",
+    "cbbpy": "unc-greensboro"
+  },
+  "UNC Wilmington": {
+    "canonical": "UNC Wilmington",
+    "torvik": "UNC Wilmington",
+    "sports_ref": "UNC Wilmington",
+    "cbbpy": "unc-wilmington"
+  },
+  "USC Upstate": {
+    "canonical": "USC Upstate",
+    "torvik": "USC Upstate",
+    "sports_ref": "USC Upstate",
+    "cbbpy": "usc-upstate"
+  },
+  "UT Arlington": {
+    "canonical": "UT Arlington",
+    "torvik": "UT Arlington",
+    "sports_ref": "UT Arlington",
+    "cbbpy": "ut-arlington"
+  },
+  "UT Rio Grande Valley": {
+    "canonical": "UT Rio Grande Valley",
+    "torvik": "UT Rio Grande Valley",
+    "sports_ref": "UT Rio Grande Valley",
+    "cbbpy": "ut-rio-grande-valley"
+  },
+  "UTEP": {
+    "canonical": "UTEP",
+    "torvik": "UTEP",
+    "sports_ref": "UTEP",
+    "cbbpy": "utep"
+  },
+  "UTSA": {
+    "canonical": "UTSA",
+    "torvik": "UTSA",
+    "sports_ref": "UTSA",
+    "cbbpy": "utsa"
+  },
+  "Utah": {
+    "canonical": "Utah",
+    "torvik": "Utah",
+    "sports_ref": "Utah",
+    "cbbpy": "utah"
+  },
+  "Utah Tech": {
+    "canonical": "Utah Tech",
+    "torvik": "Utah Tech",
+    "sports_ref": "Utah Tech",
+    "cbbpy": "utah-tech"
+  },
+  "Utah Valley": {
+    "canonical": "Utah Valley",
+    "torvik": "Utah Valley",
+    "sports_ref": "Utah Valley",
+    "cbbpy": "utah-valley"
+  },
+  "VCU": {
+    "canonical": "VCU",
+    "torvik": "VCU",
+    "sports_ref": "VCU",
+    "cbbpy": "vcu"
+  },
+  "VMI": {
+    "canonical": "VMI",
+    "torvik": "VMI",
+    "sports_ref": "VMI",
+    "cbbpy": "vmi"
+  },
+  "Valparaiso": {
+    "canonical": "Valparaiso",
+    "torvik": "Valparaiso",
+    "sports_ref": "Valparaiso",
+    "cbbpy": "valparaiso"
+  },
+  "Vermont": {
+    "canonical": "Vermont",
+    "torvik": "Vermont",
+    "sports_ref": "Vermont",
+    "cbbpy": "vermont"
+  },
+  "WAC": {
+    "canonical": "WAC",
+    "torvik": "WAC",
+    "sports_ref": "WAC",
+    "cbbpy": "wac"
+  },
+  "WCC": {
+    "canonical": "WCC",
+    "torvik": "WCC",
+    "sports_ref": "WCC",
+    "cbbpy": "wcc"
+  },
+  "Wagner": {
+    "canonical": "Wagner",
+    "torvik": "Wagner",
+    "sports_ref": "Wagner",
+    "cbbpy": "wagner"
+  },
+  "Washington St.": {
+    "canonical": "Washington St.",
+    "torvik": "Washington St.",
+    "sports_ref": "Washington St.",
+    "cbbpy": "washington-st"
+  },
+  "Weber St.": {
+    "canonical": "Weber St.",
+    "torvik": "Weber St.",
+    "sports_ref": "Weber St.",
+    "cbbpy": "weber-st"
+  },
+  "West Georgia": {
+    "canonical": "West Georgia",
+    "torvik": "West Georgia",
+    "sports_ref": "West Georgia",
+    "cbbpy": "west-georgia"
+  },
+  "Western Carolina": {
+    "canonical": "Western Carolina",
+    "torvik": "Western Carolina",
+    "sports_ref": "Western Carolina",
+    "cbbpy": "western-carolina"
+  },
+  "Western Illinois": {
+    "canonical": "Western Illinois",
+    "torvik": "Western Illinois",
+    "sports_ref": "Western Illinois",
+    "cbbpy": "western-illinois"
+  },
+  "Western Kentucky": {
+    "canonical": "Western Kentucky",
+    "torvik": "Western Kentucky",
+    "sports_ref": "Western Kentucky",
+    "cbbpy": "western-kentucky"
+  },
+  "Western Michigan": {
+    "canonical": "Western Michigan",
+    "torvik": "Western Michigan",
+    "sports_ref": "Western Michigan",
+    "cbbpy": "western-michigan"
+  },
+  "William & Mary": {
+    "canonical": "William & Mary",
+    "torvik": "William & Mary",
+    "sports_ref": "William & Mary",
+    "cbbpy": "william-mary"
+  },
+  "Winthrop": {
+    "canonical": "Winthrop",
+    "torvik": "Winthrop",
+    "sports_ref": "Winthrop",
+    "cbbpy": "winthrop"
+  },
+  "Wofford": {
+    "canonical": "Wofford",
+    "torvik": "Wofford",
+    "sports_ref": "Wofford",
+    "cbbpy": "wofford"
+  },
+  "Wright St.": {
+    "canonical": "Wright St.",
+    "torvik": "Wright St.",
+    "sports_ref": "Wright St.",
+    "cbbpy": "wright-st"
+  },
+  "Wyoming": {
+    "canonical": "Wyoming",
+    "torvik": "Wyoming",
+    "sports_ref": "Wyoming",
+    "cbbpy": "wyoming"
+  },
+  "Yale": {
+    "canonical": "Yale",
+    "torvik": "Yale",
+    "sports_ref": "Yale",
+    "cbbpy": "yale"
+  },
+  "Youngstown St.": {
+    "canonical": "Youngstown St.",
+    "torvik": "Youngstown St.",
+    "sports_ref": "Youngstown St.",
+    "cbbpy": "youngstown-st"
+  },
+  "ind": {
+    "canonical": "ind",
+    "torvik": "ind",
+    "sports_ref": "ind",
+    "cbbpy": "ind"
   }
 }
