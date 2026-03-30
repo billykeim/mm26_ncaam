@@ -247,6 +247,7 @@ mm26_ncaam/
 | 2026-03-29 | Pipeline setup | Repo scaffolded, .cursorrules + DECISIONS.md + CLAUDE_CONTEXT.md committed | Begin data ingestion |
 | 2026-03-29 | Architecture decisions | All foundational decisions locked; rolling feature design finalized | Execute ingestion pipeline |
 | 2026-03-29 | Full raw ingestion | Torvik 191,304 rows; SR coaches 14,334 + index 4,096; team map 67; CBBpy gamelogs 265,867 rows (2025) + multi-year job started | build_game_log / rolling features |
+| 2026-03-29 | EDA + team map + aggregates + static + schema + tournament analytics | EDA notebook; expanded team_name_map; player_aggregates 5,971 rows; static_features 5,971×99 (four_factors joined on year+rank); schema_registry ~295 cols; tournament historical_reference + seed_pair_win_rates + viz nb; conf_wins_json in ref | Wire game_logs rolling; optional matchup prior join to static |
 
 ---
 
