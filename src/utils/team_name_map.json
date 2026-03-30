@@ -1,0 +1,404 @@
+{
+  "Alabama": {
+    "canonical": "Alabama",
+    "torvik": "Alabama",
+    "sports_ref": "Alabama",
+    "cbbpy": "alabama"
+  },
+  "Arizona": {
+    "canonical": "Arizona",
+    "torvik": "Arizona",
+    "sports_ref": "Arizona",
+    "cbbpy": "arizona"
+  },
+  "Arizona State": {
+    "canonical": "Arizona State",
+    "torvik": "Arizona St.",
+    "sports_ref": "Arizona State",
+    "cbbpy": "arizona-state"
+  },
+  "Arkansas": {
+    "canonical": "Arkansas",
+    "torvik": "Arkansas",
+    "sports_ref": "Arkansas",
+    "cbbpy": "arkansas"
+  },
+  "Auburn": {
+    "canonical": "Auburn",
+    "torvik": "Auburn",
+    "sports_ref": "Auburn",
+    "cbbpy": "auburn"
+  },
+  "Baylor": {
+    "canonical": "Baylor",
+    "torvik": "Baylor",
+    "sports_ref": "Baylor",
+    "cbbpy": "baylor"
+  },
+  "BYU": {
+    "canonical": "BYU",
+    "torvik": "BYU",
+    "sports_ref": "BYU",
+    "cbbpy": "byu"
+  },
+  "Cincinnati": {
+    "canonical": "Cincinnati",
+    "torvik": "Cincinnati",
+    "sports_ref": "Cincinnati",
+    "cbbpy": "cincinnati"
+  },
+  "Clemson": {
+    "canonical": "Clemson",
+    "torvik": "Clemson",
+    "sports_ref": "Clemson",
+    "cbbpy": "clemson"
+  },
+  "Colorado": {
+    "canonical": "Colorado",
+    "torvik": "Colorado",
+    "sports_ref": "Colorado",
+    "cbbpy": "colorado"
+  },
+  "UConn": {
+    "canonical": "UConn",
+    "torvik": "Connecticut",
+    "sports_ref": "Connecticut",
+    "cbbpy": "connecticut"
+  },
+  "Creighton": {
+    "canonical": "Creighton",
+    "torvik": "Creighton",
+    "sports_ref": "Creighton",
+    "cbbpy": "creighton"
+  },
+  "Davidson": {
+    "canonical": "Davidson",
+    "torvik": "Davidson",
+    "sports_ref": "Davidson",
+    "cbbpy": "davidson"
+  },
+  "Duke": {
+    "canonical": "Duke",
+    "torvik": "Duke",
+    "sports_ref": "Duke",
+    "cbbpy": "duke"
+  },
+  "Florida": {
+    "canonical": "Florida",
+    "torvik": "Florida",
+    "sports_ref": "Florida",
+    "cbbpy": "florida"
+  },
+  "Florida State": {
+    "canonical": "Florida State",
+    "torvik": "Florida St.",
+    "sports_ref": "Florida State",
+    "cbbpy": "florida-state"
+  },
+  "Gonzaga": {
+    "canonical": "Gonzaga",
+    "torvik": "Gonzaga",
+    "sports_ref": "Gonzaga",
+    "cbbpy": "gonzaga"
+  },
+  "Houston": {
+    "canonical": "Houston",
+    "torvik": "Houston",
+    "sports_ref": "Houston",
+    "cbbpy": "houston"
+  },
+  "Illinois": {
+    "canonical": "Illinois",
+    "torvik": "Illinois",
+    "sports_ref": "Illinois",
+    "cbbpy": "illinois"
+  },
+  "Indiana": {
+    "canonical": "Indiana",
+    "torvik": "Indiana",
+    "sports_ref": "Indiana",
+    "cbbpy": "indiana"
+  },
+  "Iowa": {
+    "canonical": "Iowa",
+    "torvik": "Iowa",
+    "sports_ref": "Iowa",
+    "cbbpy": "iowa"
+  },
+  "Iowa State": {
+    "canonical": "Iowa State",
+    "torvik": "Iowa St.",
+    "sports_ref": "Iowa State",
+    "cbbpy": "iowa-state"
+  },
+  "Kansas": {
+    "canonical": "Kansas",
+    "torvik": "Kansas",
+    "sports_ref": "Kansas",
+    "cbbpy": "kansas"
+  },
+  "Kansas State": {
+    "canonical": "Kansas State",
+    "torvik": "Kansas St.",
+    "sports_ref": "Kansas State",
+    "cbbpy": "kansas-state"
+  },
+  "Kentucky": {
+    "canonical": "Kentucky",
+    "torvik": "Kentucky",
+    "sports_ref": "Kentucky",
+    "cbbpy": "kentucky"
+  },
+  "Louisville": {
+    "canonical": "Louisville",
+    "torvik": "Louisville",
+    "sports_ref": "Louisville",
+    "cbbpy": "louisville"
+  },
+  "LSU": {
+    "canonical": "LSU",
+    "torvik": "LSU",
+    "sports_ref": "LSU",
+    "cbbpy": "lsu"
+  },
+  "Marquette": {
+    "canonical": "Marquette",
+    "torvik": "Marquette",
+    "sports_ref": "Marquette",
+    "cbbpy": "marquette"
+  },
+  "Maryland": {
+    "canonical": "Maryland",
+    "torvik": "Maryland",
+    "sports_ref": "Maryland",
+    "cbbpy": "maryland"
+  },
+  "Memphis": {
+    "canonical": "Memphis",
+    "torvik": "Memphis",
+    "sports_ref": "Memphis",
+    "cbbpy": "memphis"
+  },
+  "Michigan": {
+    "canonical": "Michigan",
+    "torvik": "Michigan",
+    "sports_ref": "Michigan",
+    "cbbpy": "michigan"
+  },
+  "Michigan State": {
+    "canonical": "Michigan State",
+    "torvik": "Michigan St.",
+    "sports_ref": "Michigan State",
+    "cbbpy": "michigan-state"
+  },
+  "Minnesota": {
+    "canonical": "Minnesota",
+    "torvik": "Minnesota",
+    "sports_ref": "Minnesota",
+    "cbbpy": "minnesota"
+  },
+  "Mississippi State": {
+    "canonical": "Mississippi State",
+    "torvik": "Mississippi St.",
+    "sports_ref": "Mississippi State",
+    "cbbpy": "mississippi-state"
+  },
+  "Missouri": {
+    "canonical": "Missouri",
+    "torvik": "Missouri",
+    "sports_ref": "Missouri",
+    "cbbpy": "missouri"
+  },
+  "Murray State": {
+    "canonical": "Murray State",
+    "torvik": "Murray St.",
+    "sports_ref": "Murray State",
+    "cbbpy": "murray-state"
+  },
+  "UNC": {
+    "canonical": "UNC",
+    "torvik": "North Carolina",
+    "sports_ref": "North Carolina",
+    "cbbpy": "north-carolina"
+  },
+  "Notre Dame": {
+    "canonical": "Notre Dame",
+    "torvik": "Notre Dame",
+    "sports_ref": "Notre Dame",
+    "cbbpy": "notre-dame"
+  },
+  "Ohio State": {
+    "canonical": "Ohio State",
+    "torvik": "Ohio St.",
+    "sports_ref": "Ohio State",
+    "cbbpy": "ohio-state"
+  },
+  "Oklahoma": {
+    "canonical": "Oklahoma",
+    "torvik": "Oklahoma",
+    "sports_ref": "Oklahoma",
+    "cbbpy": "oklahoma"
+  },
+  "Oklahoma State": {
+    "canonical": "Oklahoma State",
+    "torvik": "Oklahoma St.",
+    "sports_ref": "Oklahoma State",
+    "cbbpy": "oklahoma-state"
+  },
+  "Oregon": {
+    "canonical": "Oregon",
+    "torvik": "Oregon",
+    "sports_ref": "Oregon",
+    "cbbpy": "oregon"
+  },
+  "Penn State": {
+    "canonical": "Penn State",
+    "torvik": "Penn St.",
+    "sports_ref": "Penn State",
+    "cbbpy": "penn-state"
+  },
+  "Purdue": {
+    "canonical": "Purdue",
+    "torvik": "Purdue",
+    "sports_ref": "Purdue",
+    "cbbpy": "purdue"
+  },
+  "Saint Mary's": {
+    "canonical": "Saint Mary's",
+    "torvik": "Saint Mary's",
+    "sports_ref": "Saint Mary's",
+    "cbbpy": "saint-marys"
+  },
+  "San Diego State": {
+    "canonical": "San Diego State",
+    "torvik": "San Diego St.",
+    "sports_ref": "San Diego State",
+    "cbbpy": "san-diego-state"
+  },
+  "Seton Hall": {
+    "canonical": "Seton Hall",
+    "torvik": "Seton Hall",
+    "sports_ref": "Seton Hall",
+    "cbbpy": "seton-hall"
+  },
+  "South Carolina": {
+    "canonical": "South Carolina",
+    "torvik": "South Carolina",
+    "sports_ref": "South Carolina",
+    "cbbpy": "south-carolina"
+  },
+  "St. John's": {
+    "canonical": "St. John's",
+    "torvik": "St. John's",
+    "sports_ref": "St. John's",
+    "cbbpy": "st-johns-ny"
+  },
+  "Tennessee": {
+    "canonical": "Tennessee",
+    "torvik": "Tennessee",
+    "sports_ref": "Tennessee",
+    "cbbpy": "tennessee"
+  },
+  "Texas": {
+    "canonical": "Texas",
+    "torvik": "Texas",
+    "sports_ref": "Texas",
+    "cbbpy": "texas"
+  },
+  "Texas A&M": {
+    "canonical": "Texas A&M",
+    "torvik": "Texas A&M",
+    "sports_ref": "Texas A&M",
+    "cbbpy": "texas-am"
+  },
+  "Texas Tech": {
+    "canonical": "Texas Tech",
+    "torvik": "Texas Tech",
+    "sports_ref": "Texas Tech",
+    "cbbpy": "texas-tech"
+  },
+  "UCLA": {
+    "canonical": "UCLA",
+    "torvik": "UCLA",
+    "sports_ref": "UCLA",
+    "cbbpy": "ucla"
+  },
+  "UNLV": {
+    "canonical": "UNLV",
+    "torvik": "UNLV",
+    "sports_ref": "UNLV",
+    "cbbpy": "unlv"
+  },
+  "USC": {
+    "canonical": "USC",
+    "torvik": "USC",
+    "sports_ref": "USC",
+    "cbbpy": "usc"
+  },
+  "Utah State": {
+    "canonical": "Utah State",
+    "torvik": "Utah St.",
+    "sports_ref": "Utah State",
+    "cbbpy": "utah-state"
+  },
+  "Vanderbilt": {
+    "canonical": "Vanderbilt",
+    "torvik": "Vanderbilt",
+    "sports_ref": "Vanderbilt",
+    "cbbpy": "vanderbilt"
+  },
+  "Villanova": {
+    "canonical": "Villanova",
+    "torvik": "Villanova",
+    "sports_ref": "Villanova",
+    "cbbpy": "villanova"
+  },
+  "Virginia": {
+    "canonical": "Virginia",
+    "torvik": "Virginia",
+    "sports_ref": "Virginia",
+    "cbbpy": "virginia"
+  },
+  "Virginia Tech": {
+    "canonical": "Virginia Tech",
+    "torvik": "Virginia Tech",
+    "sports_ref": "Virginia Tech",
+    "cbbpy": "virginia-tech"
+  },
+  "Wake Forest": {
+    "canonical": "Wake Forest",
+    "torvik": "Wake Forest",
+    "sports_ref": "Wake Forest",
+    "cbbpy": "wake-forest"
+  },
+  "Washington": {
+    "canonical": "Washington",
+    "torvik": "Washington",
+    "sports_ref": "Washington",
+    "cbbpy": "washington"
+  },
+  "West Virginia": {
+    "canonical": "West Virginia",
+    "torvik": "West Virginia",
+    "sports_ref": "West Virginia",
+    "cbbpy": "west-virginia"
+  },
+  "Wichita State": {
+    "canonical": "Wichita State",
+    "torvik": "Wichita St.",
+    "sports_ref": "Wichita State",
+    "cbbpy": "wichita-state"
+  },
+  "Wisconsin": {
+    "canonical": "Wisconsin",
+    "torvik": "Wisconsin",
+    "sports_ref": "Wisconsin",
+    "cbbpy": "wisconsin"
+  },
+  "Xavier": {
+    "canonical": "Xavier",
+    "torvik": "Xavier",
+    "sports_ref": "Xavier",
+    "cbbpy": "xavier"
+  }
+}
