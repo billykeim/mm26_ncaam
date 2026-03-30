@@ -1,0 +1,502 @@
+{
+  "Mike Krzyzewski": {
+    "canonical": "Mike Krzyzewski",
+    "sports_ref_slug": "mike-krzyzewski-1",
+    "aliases": []
+  },
+  "John Wooden": {
+    "canonical": "John Wooden",
+    "sports_ref_slug": "john-wooden-1",
+    "aliases": []
+  },
+  "Roy Williams": {
+    "canonical": "Roy Williams",
+    "sports_ref_slug": "roy-williams-1",
+    "aliases": []
+  },
+  "Jim Boeheim": {
+    "canonical": "Jim Boeheim",
+    "sports_ref_slug": "jim-boeheim-1",
+    "aliases": []
+  },
+  "Dean Smith": {
+    "canonical": "Dean Smith",
+    "sports_ref_slug": "dean-smith-1",
+    "aliases": []
+  },
+  "Bob Knight": {
+    "canonical": "Bob Knight",
+    "sports_ref_slug": "bob-knight-1",
+    "aliases": []
+  },
+  "Tom Izzo": {
+    "canonical": "Tom Izzo",
+    "sports_ref_slug": "tom-izzo-1",
+    "aliases": []
+  },
+  "Bill Self": {
+    "canonical": "Bill Self",
+    "sports_ref_slug": "bill-self-1",
+    "aliases": []
+  },
+  "Lute Olson": {
+    "canonical": "Lute Olson",
+    "sports_ref_slug": "lute-olson-1",
+    "aliases": []
+  },
+  "Rick Pitino": {
+    "canonical": "Rick Pitino",
+    "sports_ref_slug": "rick-pitino-1",
+    "aliases": []
+  },
+  "Adolph Rupp": {
+    "canonical": "Adolph Rupp",
+    "sports_ref_slug": "adolph-rupp-1",
+    "aliases": []
+  },
+  "Jim Calhoun": {
+    "canonical": "Jim Calhoun",
+    "sports_ref_slug": "jim-calhoun-1",
+    "aliases": []
+  },
+  "Rick Barnes": {
+    "canonical": "Rick Barnes",
+    "sports_ref_slug": "rick-barnes-1",
+    "aliases": []
+  },
+  "Denny Crum": {
+    "canonical": "Denny Crum",
+    "sports_ref_slug": "denny-crum-1",
+    "aliases": []
+  },
+  "John Calipari": {
+    "canonical": "John Calipari",
+    "sports_ref_slug": "john-calipari-1",
+    "aliases": []
+  },
+  "Eddie Sutton": {
+    "canonical": "Eddie Sutton",
+    "sports_ref_slug": "eddie-sutton-1",
+    "aliases": []
+  },
+  "Mark Few": {
+    "canonical": "Mark Few",
+    "sports_ref_slug": "mark-few-1",
+    "aliases": []
+  },
+  "Bob Huggins": {
+    "canonical": "Bob Huggins",
+    "sports_ref_slug": "bob-huggins-1",
+    "aliases": []
+  },
+  "Jay Wright": {
+    "canonical": "Jay Wright",
+    "sports_ref_slug": "jay-wright-1",
+    "aliases": []
+  },
+  "John Thompson Jr": {
+    "canonical": "John Thompson Jr",
+    "sports_ref_slug": "john-thompson-1",
+    "aliases": []
+  },
+  "Kelvin Sampson": {
+    "canonical": "Kelvin Sampson",
+    "sports_ref_slug": "kelvin-sampson-1",
+    "aliases": []
+  },
+  "Jerry Tarkanian": {
+    "canonical": "Jerry Tarkanian",
+    "sports_ref_slug": "jerry-tarkanian-1",
+    "aliases": []
+  },
+  "Lon Kruger": {
+    "canonical": "Lon Kruger",
+    "sports_ref_slug": "lon-kruger-1",
+    "aliases": []
+  },
+  "Tubby Smith": {
+    "canonical": "Tubby Smith",
+    "sports_ref_slug": "tubby-smith-1",
+    "aliases": []
+  },
+  "Billy Donovan": {
+    "canonical": "Billy Donovan",
+    "sports_ref_slug": "billy-donovan-1",
+    "aliases": []
+  },
+  "Lou Henson": {
+    "canonical": "Lou Henson",
+    "sports_ref_slug": "lou-henson-1",
+    "aliases": []
+  },
+  "Gary Williams": {
+    "canonical": "Gary Williams",
+    "sports_ref_slug": "gary-williams-1",
+    "aliases": []
+  },
+  "Nolan Richardson": {
+    "canonical": "Nolan Richardson",
+    "sports_ref_slug": "nolan-richardson-1",
+    "aliases": []
+  },
+  "Lou Carnesecca": {
+    "canonical": "Lou Carnesecca",
+    "sports_ref_slug": "lou-carnesecca-1",
+    "aliases": []
+  },
+  "Steve Fisher": {
+    "canonical": "Steve Fisher",
+    "sports_ref_slug": "steve-fisher-1",
+    "aliases": []
+  },
+  "Matt Painter": {
+    "canonical": "Matt Painter",
+    "sports_ref_slug": "matt-painter-1",
+    "aliases": []
+  },
+  "Jim Harrick": {
+    "canonical": "Jim Harrick",
+    "sports_ref_slug": "jim-harrick-1",
+    "aliases": []
+  },
+  "Gene Keady": {
+    "canonical": "Gene Keady",
+    "sports_ref_slug": "gene-keady-1",
+    "aliases": []
+  },
+  "Dana Altman": {
+    "canonical": "Dana Altman",
+    "sports_ref_slug": "dana-altman-1",
+    "aliases": []
+  },
+  "Fran Dunphy": {
+    "canonical": "Fran Dunphy",
+    "sports_ref_slug": "fran-dunphy-1",
+    "aliases": []
+  },
+  "John Chaney": {
+    "canonical": "John Chaney",
+    "sports_ref_slug": "john-chaney-1",
+    "aliases": []
+  },
+  "Mick Cronin": {
+    "canonical": "Mick Cronin",
+    "sports_ref_slug": "mick-cronin-1",
+    "aliases": []
+  },
+  "Guy Lewis": {
+    "canonical": "Guy Lewis",
+    "sports_ref_slug": "guy-lewis-1",
+    "aliases": []
+  },
+  "Don Haskins": {
+    "canonical": "Don Haskins",
+    "sports_ref_slug": "don-haskins-1",
+    "aliases": []
+  },
+  "Mike Montgomery": {
+    "canonical": "Mike Montgomery",
+    "sports_ref_slug": "mike-montgomery-1",
+    "aliases": []
+  },
+  "Bo Ryan": {
+    "canonical": "Bo Ryan",
+    "sports_ref_slug": "bo-ryan-1",
+    "aliases": []
+  },
+  "Norm Stewart": {
+    "canonical": "Norm Stewart",
+    "sports_ref_slug": "norm-stewart-1",
+    "aliases": []
+  },
+  "Jamie Dixon": {
+    "canonical": "Jamie Dixon",
+    "sports_ref_slug": "jamie-dixon-1",
+    "aliases": []
+  },
+  "Digger Phelps": {
+    "canonical": "Digger Phelps",
+    "sports_ref_slug": "digger-phelps-1",
+    "aliases": []
+  },
+  "Scott Drew": {
+    "canonical": "Scott Drew",
+    "sports_ref_slug": "scott-drew-1",
+    "aliases": []
+  },
+  "Mike Brey": {
+    "canonical": "Mike Brey",
+    "sports_ref_slug": "mike-brey-1",
+    "aliases": []
+  },
+  "Bruce Pearl": {
+    "canonical": "Bruce Pearl",
+    "sports_ref_slug": "bruce-pearl-1",
+    "aliases": []
+  },
+  "Tony Bennett": {
+    "canonical": "Tony Bennett",
+    "sports_ref_slug": "tony-bennett-1",
+    "aliases": []
+  },
+  "Gregg Marshall": {
+    "canonical": "Gregg Marshall",
+    "sports_ref_slug": "gregg-marshall-1",
+    "aliases": []
+  },
+  "Dale Brown": {
+    "canonical": "Dale Brown",
+    "sports_ref_slug": "dale-brown-1",
+    "aliases": []
+  },
+  "Hank Iba": {
+    "canonical": "Hank Iba",
+    "sports_ref_slug": "hank-iba-1",
+    "aliases": []
+  },
+  "Thad Matta": {
+    "canonical": "Thad Matta",
+    "sports_ref_slug": "thad-matta-1",
+    "aliases": []
+  },
+  "John Beilein": {
+    "canonical": "John Beilein",
+    "sports_ref_slug": "john-beilein-1",
+    "aliases": []
+  },
+  "Ray Meyer": {
+    "canonical": "Ray Meyer",
+    "sports_ref_slug": "ray-meyer-1",
+    "aliases": []
+  },
+  "Sean Miller": {
+    "canonical": "Sean Miller",
+    "sports_ref_slug": "sean-miller-1",
+    "aliases": []
+  },
+  "Bruce Weber": {
+    "canonical": "Bruce Weber",
+    "sports_ref_slug": "bruce-weber-1",
+    "aliases": []
+  },
+  "Joe B. Hall": {
+    "canonical": "Joe B. Hall",
+    "sports_ref_slug": "joe-b-hall-1",
+    "aliases": []
+  },
+  "Rollie Massimino": {
+    "canonical": "Rollie Massimino",
+    "sports_ref_slug": "rollie-massimino-1",
+    "aliases": []
+  },
+  "Rick Majerus": {
+    "canonical": "Rick Majerus",
+    "sports_ref_slug": "rick-majerus-1",
+    "aliases": []
+  },
+  "Fran McCaffery": {
+    "canonical": "Fran McCaffery",
+    "sports_ref_slug": "fran-mccaffery-1",
+    "aliases": []
+  },
+  "Greg McDermott": {
+    "canonical": "Greg McDermott",
+    "sports_ref_slug": "greg-mcdermott-1",
+    "aliases": []
+  },
+  "Dan Hurley": {
+    "canonical": "Dan Hurley",
+    "sports_ref_slug": "dan-hurley-1",
+    "aliases": []
+  },
+  "Steve Alford": {
+    "canonical": "Steve Alford",
+    "sports_ref_slug": "steve-alford-1",
+    "aliases": []
+  },
+  "Gene Bartow": {
+    "canonical": "Gene Bartow",
+    "sports_ref_slug": "gene-bartow-1",
+    "aliases": []
+  },
+  "Lefty Driesell": {
+    "canonical": "Lefty Driesell",
+    "sports_ref_slug": "lefty-driesell-1",
+    "aliases": []
+  },
+  "Jud Heathcote": {
+    "canonical": "Jud Heathcote",
+    "sports_ref_slug": "jud-heathcote-1",
+    "aliases": []
+  },
+  "Ben Howland": {
+    "canonical": "Ben Howland",
+    "sports_ref_slug": "ben-howland-1",
+    "aliases": []
+  },
+  "Shaka Smart": {
+    "canonical": "Shaka Smart",
+    "sports_ref_slug": "shaka-smart-1",
+    "aliases": []
+  },
+  "Billy Tubbs": {
+    "canonical": "Billy Tubbs",
+    "sports_ref_slug": "billy-tubbs-1",
+    "aliases": []
+  },
+  "Al McGuire": {
+    "canonical": "Al McGuire",
+    "sports_ref_slug": "al-mcguire-1",
+    "aliases": []
+  },
+  "Jim Larranaga": {
+    "canonical": "Jim Larranaga",
+    "sports_ref_slug": "jim-larranaga-1",
+    "aliases": []
+  },
+  "Randy Bennett": {
+    "canonical": "Randy Bennett",
+    "sports_ref_slug": "randy-bennett-1",
+    "aliases": []
+  },
+  "Jim Valvano": {
+    "canonical": "Jim Valvano",
+    "sports_ref_slug": "jim-valvano-1",
+    "aliases": []
+  },
+  "Bobby Cremins": {
+    "canonical": "Bobby Cremins",
+    "sports_ref_slug": "bobby-cremins-1",
+    "aliases": []
+  },
+  "Larry Brown": {
+    "canonical": "Larry Brown",
+    "sports_ref_slug": "larry-brown-2",
+    "aliases": []
+  },
+  "Mark Gottfried": {
+    "canonical": "Mark Gottfried",
+    "sports_ref_slug": "mark-gottfried-1",
+    "aliases": []
+  },
+  "Gale Catlett": {
+    "canonical": "Gale Catlett",
+    "sports_ref_slug": "gale-catlett-1",
+    "aliases": []
+  },
+  "Tommy Penders": {
+    "canonical": "Tommy Penders",
+    "sports_ref_slug": "thomas-penders-1",
+    "aliases": []
+  },
+  "Frank McGuire": {
+    "canonical": "Frank McGuire",
+    "sports_ref_slug": "frank-mcguire-1",
+    "aliases": []
+  },
+  "Tom Davis": {
+    "canonical": "Tom Davis",
+    "sports_ref_slug": "tom-davis-1",
+    "aliases": []
+  },
+  "Leonard Hamilton": {
+    "canonical": "Leonard Hamilton",
+    "sports_ref_slug": "leonard-hamilton-1",
+    "aliases": []
+  },
+  "Terry Holland": {
+    "canonical": "Terry Holland",
+    "sports_ref_slug": "terry-holland-1",
+    "aliases": []
+  },
+  "Buzz Williams": {
+    "canonical": "Buzz Williams",
+    "sports_ref_slug": "buzz-williams-1",
+    "aliases": []
+  },
+  "Dave Bliss": {
+    "canonical": "Dave Bliss",
+    "sports_ref_slug": "dave-bliss-1",
+    "aliases": []
+  },
+  "Pete Carril": {
+    "canonical": "Pete Carril",
+    "sports_ref_slug": "pete-carril-1",
+    "aliases": []
+  },
+  "Everett Shelton": {
+    "canonical": "Everett Shelton",
+    "sports_ref_slug": "everett-shelton-1",
+    "aliases": []
+  },
+  "Johnny Orr": {
+    "canonical": "Johnny Orr",
+    "sports_ref_slug": "johnny-orr-1",
+    "aliases": []
+  },
+  "John Thompson III": {
+    "canonical": "John Thompson III",
+    "sports_ref_slug": "john-thompson-2",
+    "aliases": []
+  },
+  "Bob McKillop": {
+    "canonical": "Bob McKillop",
+    "sports_ref_slug": "bob-mckillop-1",
+    "aliases": []
+  },
+  "Brad Underwood": {
+    "canonical": "Brad Underwood",
+    "sports_ref_slug": "brad-underwood-1",
+    "aliases": []
+  },
+  "Ralph Miller": {
+    "canonical": "Ralph Miller",
+    "sports_ref_slug": "ralph-miller-1",
+    "aliases": []
+  },
+  "Cliff Ellis": {
+    "canonical": "Cliff Ellis",
+    "sports_ref_slug": "cliff-ellis-1",
+    "aliases": []
+  },
+  "Mark Turgeon": {
+    "canonical": "Mark Turgeon",
+    "sports_ref_slug": "mark-turgeon-1",
+    "aliases": []
+  },
+  "Jack Gardner": {
+    "canonical": "Jack Gardner",
+    "sports_ref_slug": "jack-gardner-1",
+    "aliases": []
+  },
+  "Don DeVoe": {
+    "canonical": "Don DeVoe",
+    "sports_ref_slug": "don-devoe-1",
+    "aliases": []
+  },
+  "Wimp Sanderson": {
+    "canonical": "Wimp Sanderson",
+    "sports_ref_slug": "wimp-sanderson-1",
+    "aliases": []
+  },
+  "Tom Crean": {
+    "canonical": "Tom Crean",
+    "sports_ref_slug": "tom-crean-1",
+    "aliases": []
+  },
+  "Phil Woolpert": {
+    "canonical": "Phil Woolpert",
+    "sports_ref_slug": "phil-woolpert-1",
+    "aliases": []
+  },
+  "Mike Davis": {
+    "canonical": "Mike Davis",
+    "sports_ref_slug": "mike-davis-6",
+    "aliases": []
+  },
+  "Nate Oats": {
+    "canonical": "Nate Oats",
+    "sports_ref_slug": "nate-oats-1",
+    "aliases": []
+  }
+}
