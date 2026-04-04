@@ -216,23 +216,18 @@ def build_rolling_snapshot(rolling: pd.DataFrame) -> pd.DataFrame:
     """
     Last team×game row strictly before Selection Sunday.
 
-    Torvik ``season`` / tournament label ``Y`` is the March championship year; CBBpy
-    parquet ``year`` is the fall calendar year that starts that season (Nov Y–Mar Y+1).
-    We use game-log ``year == Y - 1`` for tournament season ``Y`` (``Y == 2008`` uses 2008).
+    Tournament label ``Y`` matches CBBpy game-log ``year`` (season ending March ``Y``).
+    ``game_date`` in ``build_game_log`` is anchored at November ``Y−1`` so rows fall in
+    ``Nov (Y−1)``–``Mar Y``; we keep ``rolling.year == tour_y`` and ``game_date`` before
+    that year's Selection Sunday.
     """
     parts: list[pd.DataFrame] = []
     rolling = rolling.copy()
     rolling["game_date"] = pd.to_datetime(rolling["game_date"])
-    first_tourn = min(TRAINING_YEARS)
     for tour_y in TRAINING_YEARS:
         if tour_y not in SELECTION_SUNDAY_DATES:
             continue
-        if tour_y == 2021:
-            log_y = 2021
-        elif tour_y > first_tourn:
-            log_y = tour_y - 1
-        else:
-            log_y = tour_y
+        log_y = tour_y
         cut = pd.Timestamp(SELECTION_SUNDAY_DATES[tour_y])
         sub = rolling[(rolling["year"] == log_y) & (rolling["game_date"] < cut)]
         if sub.empty:

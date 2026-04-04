@@ -492,9 +492,9 @@
     "cbbpy": "arkansas-pine-bluff"
   },
   "Arkansas St.": {
-    "canonical": "Arkansas St.",
+    "canonical": "Arkansas State",
     "torvik": "Arkansas St.",
-    "sports_ref": "Arkansas St.",
+    "sports_ref": "Arkansas State",
     "cbbpy": "arkansas-st"
   },
   "Army": {
@@ -564,9 +564,9 @@
     "cbbpy": "belmont"
   },
   "Bethune Cookman": {
-    "canonical": "Bethune Cookman",
+    "canonical": "Bethune-Cookman",
     "torvik": "Bethune Cookman",
-    "sports_ref": "Bethune Cookman",
+    "sports_ref": "Bethune-Cookman",
     "cbbpy": "bethune-cookman"
   },
   "Binghamton": {
@@ -744,9 +744,9 @@
     "cbbpy": "chattanooga"
   },
   "Chicago St.": {
-    "canonical": "Chicago St.",
+    "canonical": "Chicago State",
     "torvik": "Chicago St.",
-    "sports_ref": "Chicago St.",
+    "sports_ref": "Chicago State",
     "cbbpy": "chicago-st"
   },
   "Cleveland St.": {
@@ -822,9 +822,9 @@
     "cbbpy": "delaware"
   },
   "Delaware St.": {
-    "canonical": "Delaware St.",
+    "canonical": "Delaware State",
     "torvik": "Delaware St.",
-    "sports_ref": "Delaware St.",
+    "sports_ref": "Delaware State",
     "cbbpy": "delaware-st"
   },
   "Denver": {
@@ -1032,9 +1032,9 @@
     "cbbpy": "georgia-tech"
   },
   "Grambling St.": {
-    "canonical": "Grambling St.",
+    "canonical": "Grambling",
     "torvik": "Grambling St.",
-    "sports_ref": "Grambling St.",
+    "sports_ref": "Grambling",
     "cbbpy": "grambling-st"
   },
   "Grand Canyon": {
@@ -1164,9 +1164,9 @@
     "cbbpy": "incarnate-word"
   },
   "Indiana St.": {
-    "canonical": "Indiana St.",
+    "canonical": "Indiana State",
     "torvik": "Indiana St.",
-    "sports_ref": "Indiana St.",
+    "sports_ref": "Indiana State",
     "cbbpy": "indiana-st"
   },
   "Iona": {
@@ -1506,9 +1506,9 @@
     "cbbpy": "mount-st-mary-s"
   },
   "N.C. State": {
-    "canonical": "N.C. State",
+    "canonical": "NC State",
     "torvik": "N.C. State",
-    "sports_ref": "N.C. State",
+    "sports_ref": "NC State",
     "cbbpy": "n-c-state"
   },
   "NEC": {
@@ -1584,9 +1584,9 @@
     "cbbpy": "nicholls-st"
   },
   "Norfolk St.": {
-    "canonical": "Norfolk St.",
+    "canonical": "Norfolk State",
     "torvik": "Norfolk St.",
-    "sports_ref": "Norfolk St.",
+    "sports_ref": "Norfolk State",
     "cbbpy": "norfolk-st"
   },
   "North Alabama": {
@@ -1968,9 +1968,9 @@
     "cbbpy": "savannah-st"
   },
   "Seattle": {
-    "canonical": "Seattle",
+    "canonical": "Seattle U",
     "torvik": "Seattle",
-    "sports_ref": "Seattle",
+    "sports_ref": "Seattle U",
     "cbbpy": "seattle"
   },
   "Siena": {
@@ -2130,9 +2130,9 @@
     "cbbpy": "tcu"
   },
   "Tarleton St.": {
-    "canonical": "Tarleton St.",
+    "canonical": "Tarleton State",
     "torvik": "Tarleton St.",
-    "sports_ref": "Tarleton St.",
+    "sports_ref": "Tarleton State",
     "cbbpy": "tarleton-st"
   },
   "Temple": {

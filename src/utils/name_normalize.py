@@ -9,6 +9,37 @@ from typing import Any
 
 from src.utils.constants import TEAM_NAME_MAP_PATH
 
+# Torvik / tournament strings → CBBpy ESPN ``location`` labels in raw game logs.
+_EXTRA_TOURNAMENT_TO_ESPN: dict[str, str] = {
+    "Mississippi": "Ole Miss",
+    "Miami FL": "Miami",
+    "FIU": "Florida International",
+    "IU Indy": "IU Indianapolis",
+    "UMKC": "Kansas City",
+    "Illinois Chicago": "UIC",
+    "Texas A&M Corpus Chris": "Texas A&M-Corpus Christi",
+    "Cal Baptist": "California Baptist",
+    "Hawaii": "Hawai'i",
+    "Penn": "Pennsylvania",
+    "Nebraska Omaha": "Omaha",
+    "Saint Francis": "Saint Francis Red Flash",
+    "Queens": "Queens University",
+}
+
+
+def align_team_norm_for_game_log(team_norm: str) -> str:
+    """
+    Normalize cross-source labels so tournament/static names match CBBpy game logs.
+
+    Applies explicit aliases, then ``… St.`` → ``… State`` (Torvik shorthand vs ESPN).
+    """
+    n = str(team_norm).strip()
+    if n in _EXTRA_TOURNAMENT_TO_ESPN:
+        return _EXTRA_TOURNAMENT_TO_ESPN[n]
+    if n.endswith(" St."):
+        return f"{n[:-4]} State"
+    return n
+
 
 def load_team_name_map(path: Path | None = None) -> dict[str, Any]:
     """Load canonical team crosswalk JSON."""
@@ -22,11 +53,11 @@ def torvik_to_canonical(team: str, mapping: dict[str, Any]) -> str:
     t = str(team).strip()
     for _canon, entry in mapping.items():
         if isinstance(entry, dict) and entry.get("torvik") == t:
-            return str(entry.get("canonical", _canon))
+            return align_team_norm_for_game_log(str(entry.get("canonical", _canon)))
     # direct canonical key match
     if t in mapping:
-        return t
-    return t
+        return align_team_norm_for_game_log(t)
+    return align_team_norm_for_game_log(t)
 
 
 def school_to_canonical(school: str, mapping: dict[str, Any]) -> str:
@@ -36,8 +67,8 @@ def school_to_canonical(school: str, mapping: dict[str, Any]) -> str:
         if not isinstance(entry, dict):
             continue
         if entry.get("sports_ref") == s or entry.get("canonical") == s:
-            return str(entry.get("canonical", _canon))
-    return s
+            return align_team_norm_for_game_log(str(entry.get("canonical", _canon)))
+    return align_team_norm_for_game_log(s)
 
 
 def slugify_cbbpy(name: str) -> str:

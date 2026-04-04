@@ -14,7 +14,12 @@ if str(_PROJECT) not in sys.path:
 
 import cbbpy
 
-from src.utils.constants import DATA_PROCESSED, GAME_LOGS_RAW, TRAINING_YEARS
+from src.utils.constants import (
+    DATA_PROCESSED,
+    GAME_LOGS_RAW,
+    SELECTION_SUNDAY_DATES,
+    TRAINING_YEARS,
+)
 from src.utils.name_normalize import load_team_name_map, school_to_canonical
 
 SUM_COLS = [
@@ -179,9 +184,25 @@ def add_season_fields(df: pd.DataFrame) -> pd.DataFrame:
     out["is_early_season"] = (out["game_num"] <= 8).astype(np.int8)
     out["conf_game_flag"] = np.int8(0)
     out["is_tournament_game"] = np.int8(0)
-    # CBBpy ``year`` Y = season from fall Y through following spring; anchor at Nov Y.
-    base = pd.to_datetime(out["year"].astype(str) + "-11-01", utc=False)
-    out["game_date"] = base + pd.to_timedelta((out["game_num"] - 1) * 4, unit="D")
+    # CBBpy ``year`` Y is the season ending in March Y. Map each team's game_num linearly from
+    # November (Y−1) up to (but not including) that season's Selection Sunday so every row is
+    # eligible for pre-tournament snapshots and ordering matches schedule sequence.
+    y_int = pd.to_numeric(out["year"], errors="coerce").astype(int)
+    nov = pd.to_datetime((y_int - 1).astype(str) + "-11-01", utc=False)
+    cut = pd.to_datetime(y_int.map(lambda y: SELECTION_SUNDAY_DATES.get(int(y))), utc=False)
+    has_cut = cut.notna()
+    denom = max_g.clip(lower=1)
+    frac = (out["game_num"] - 1) / denom
+    out["game_date"] = pd.NaT
+    out.loc[has_cut, "game_date"] = (
+        nov[has_cut] + (cut[has_cut] - nov[has_cut]) * frac[has_cut]
+    )
+    fb = ~has_cut
+    if fb.any():
+        base = pd.to_datetime((y_int[fb] - 1).astype(str) + "-11-01", utc=False)
+        out.loc[fb, "game_date"] = base + pd.to_timedelta(
+            (out.loc[fb, "game_num"] - 1) * 4, unit="D"
+        )
     return out.drop(columns=["_sched_order"], errors="ignore")
 
 
