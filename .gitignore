@@ -4,5 +4,6 @@ __pycache__/
 .venv/
 venv/
 .torvik_cache/
+data/raw/sports_ref/tournament_results_cache/
 .Rhistory
 gamelogs_full.log
