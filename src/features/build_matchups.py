@@ -96,6 +96,32 @@ def parse_ncaa_seeds(matchup: object) -> tuple[int | None, int | None]:
     return None, None
 
 
+def apply_random_t1_t2_swap(df: pd.DataFrame, seed: int = 42) -> pd.DataFrame:
+    """
+    Swap team1/team2 (and aligned norms, seeds, result) on ~50% of rows for label balance.
+
+    Torvik often orders the stronger team as team1, skewing ``result`` upward; swapping
+    breaks that bias while preserving the true winner in ``winner``.
+    """
+    out = df.copy()
+    rng = np.random.RandomState(seed)
+    w = rng.random(len(out)) < 0.5
+    if not w.any():
+        return out
+    t1 = out.loc[w, "team1"].copy()
+    out.loc[w, "team1"] = out.loc[w, "team2"].values
+    out.loc[w, "team2"] = t1.values
+    n1 = out.loc[w, "t1_team_norm"].copy()
+    out.loc[w, "t1_team_norm"] = out.loc[w, "t2_team_norm"].values
+    out.loc[w, "t2_team_norm"] = n1.values
+    if "t1_seed" in out.columns and "t2_seed" in out.columns:
+        s1 = out.loc[w, "t1_seed"].copy()
+        out.loc[w, "t1_seed"] = out.loc[w, "t2_seed"].values
+        out.loc[w, "t2_seed"] = s1.values
+    out.loc[w, "result"] = (1 - out.loc[w, "result"].astype(int)).astype(np.int8)
+    return out
+
+
 def load_tournament_base() -> pd.DataFrame:
     """Tournament rows with ``year``, team norms, and binary ``result`` (1 = team1 won)."""
     use_cols = [
@@ -117,6 +143,14 @@ def load_tournament_base() -> pd.DataFrame:
     df["t1_seed"] = seeds.map(lambda x: x[0])
     df["t2_seed"] = seeds.map(lambda x: x[1])
     df["game_id"] = df["muid"].astype(str)
+    df = apply_random_t1_t2_swap(df, seed=42)
+    rate = float(df["result"].mean())
+    print(f"[build_matchups] after t1/t2 balance swap: result mean={rate:.4f} (target ~0.50)")
+    if not (0.48 <= rate <= 0.52):
+        print(
+            f"[build_matchups] WARN: result mean {rate:.4f} outside [0.48, 0.52] "
+            "(check row count / swap logic)"
+        )
     return df
 
 
