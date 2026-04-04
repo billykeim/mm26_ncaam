@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import re
 import sys
 from pathlib import Path
 
@@ -18,6 +17,7 @@ from src.utils.constants import (
     DATA_PROCESSED,
     PROJECT_ROOT,
     SELECTION_SUNDAY_DATES,
+    TOURNAMENT_SEEDS_PATH,
     TRAINING_YEARS,
 )
 
@@ -142,85 +142,6 @@ def filter_ncaa_bracket_only(df: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(parts, ignore_index=True)
 
 
-def parse_ncaa_seeds(matchup: object) -> tuple[int | None, int | None]:
-    """Parse ``t1_seed``, ``t2_seed`` when matchup lists seeds 1–16 (NCAA-style)."""
-    m = re.match(
-        r"^\s*(\d{1,2})\s+.+?\s+(?:vs\.|at)\s*(\d{1,2})\s+",
-        str(matchup),
-        flags=re.IGNORECASE,
-    )
-    if not m:
-        return None, None
-    a, b = int(m.group(1)), int(m.group(2))
-    if 1 <= a <= 16 and 1 <= b <= 16:
-        return a, b
-    return None, None
-
-
-def fill_ncaa_seeds_from_tournament(df: pd.DataFrame, static: pd.DataFrame) -> pd.DataFrame:
-    """
-    NCAA seeds: (1) parse ``matchup`` when both labels are 1–16; (2) propagate to every
-    ``(year, team_norm)`` seen in those rows; (3) impute remaining teams from pretournament
-    ``barthag`` strength within the tournament field (1 = strongest), clipped to 1–16.
-    """
-    out = df.copy()
-    st = static.drop_duplicates(subset=["team_norm", "year"], keep="first").copy()
-    st["year"] = pd.to_numeric(st["year"], errors="coerce").astype(int)
-    st["barthag"] = pd.to_numeric(st["barthag"], errors="coerce")
-
-    lookup: dict[tuple[int, str], int] = {}
-    for _, r in out.iterrows():
-        a, b = parse_ncaa_seeds(r["matchup"])
-        if a is not None and b is not None:
-            yi = int(r["year"])
-            lookup[(yi, str(r["t1_team_norm"]))] = int(a)
-            lookup[(yi, str(r["t2_team_norm"]))] = int(b)
-
-    years = pd.to_numeric(out["year"], errors="coerce").astype(int).unique()
-    imputed: dict[tuple[int, str], int] = {}
-    for yi in years:
-        if pd.isna(yi):
-            continue
-        yi = int(yi)
-        sub = out[out["year"] == yi]
-        teams = np.unique(
-            np.concatenate(
-                [sub["t1_team_norm"].astype(str).values, sub["t2_team_norm"].astype(str).values]
-            )
-        )
-        rows: list[tuple[str, float]] = []
-        bh_by = st.loc[st["year"] == yi].set_index("team_norm")["barthag"]
-        for t in teams:
-            v = bh_by.get(t, np.nan)
-            if pd.notna(v):
-                rows.append((t, float(v)))
-        rows.sort(key=lambda x: -x[1])
-        n = len(rows)
-        for i, (t, _) in enumerate(rows):
-            imputed[(yi, t)] = int(np.clip(np.ceil(16 * (i + 1) / max(n, 1)), 1, 16))
-        for t in teams:
-            if (yi, t) not in imputed:
-                imputed[(yi, t)] = 8
-
-    ns1: list[int] = []
-    ns2: list[int] = []
-    for _, r in out.iterrows():
-        yi = int(r["year"])
-        n1 = str(r["t1_team_norm"])
-        n2 = str(r["t2_team_norm"])
-        s1 = lookup.get((yi, n1))
-        if s1 is None:
-            s1 = imputed.get((yi, n1), 8)
-        s2 = lookup.get((yi, n2))
-        if s2 is None:
-            s2 = imputed.get((yi, n2), 8)
-        ns1.append(int(s1))
-        ns2.append(int(s2))
-    out["t1_seed"] = ns1
-    out["t2_seed"] = ns2
-    return out
-
-
 def apply_random_t1_t2_swap(df: pd.DataFrame, seed: int = 42) -> pd.DataFrame:
     """
     Swap team1/team2 (and aligned norms, seeds, result) on ~50% of rows for label balance.
@@ -267,19 +188,62 @@ def load_tournament_base() -> pd.DataFrame:
     df["t2_team_norm"] = df["team2"].map(lambda x: torvik_to_canonical(str(x), mapping))
     df["result"] = (df["winner"].astype(str) == df["team1"].astype(str)).astype(np.int8)
     df["game_id"] = df["muid"].astype(str)
-    static_path = DATA_FEATURES / "static_features.parquet"
-    if static_path.exists():
-        static_pre = pd.read_parquet(static_path)
-        df = fill_ncaa_seeds_from_tournament(df, static_pre)
-        print(
-            f"[build_matchups] seeds filled: t1 null={df['t1_seed'].isna().mean():.4f}, "
-            f"t2 null={df['t2_seed'].isna().mean():.4f}"
+    if not TOURNAMENT_SEEDS_PATH.exists():
+        raise FileNotFoundError(
+            f"Official seeds missing: {TOURNAMENT_SEEDS_PATH}. "
+            "Run: python -m src.data.ingest_tournament_seeds"
         )
-    else:
-        seeds = df["matchup"].map(parse_ncaa_seeds)
-        df["t1_seed"] = seeds.map(lambda x: x[0])
-        df["t2_seed"] = seeds.map(lambda x: x[1])
-        print("[build_matchups] WARN: static_features missing; seeds from matchup parse only")
+    seeds_tbl = pd.read_parquet(TOURNAMENT_SEEDS_PATH)
+    seeds_tbl = seeds_tbl.drop_duplicates(subset=["year", "team_norm"], keep="first")
+    seeds_tbl["year"] = pd.to_numeric(seeds_tbl["year"], errors="coerce").astype(int)
+    seeds_tbl["team_norm"] = seeds_tbl["team_norm"].astype(str)
+    seeds_tbl["official_seed"] = pd.to_numeric(seeds_tbl["official_seed"], errors="coerce").astype(
+        int
+    )
+    seed_pairs: set[tuple[int, str]] = set(
+        zip(seeds_tbl["year"].tolist(), seeds_tbl["team_norm"].tolist())
+    )
+    df["year"] = pd.to_numeric(df["year"], errors="coerce").astype(int)
+    n_before = len(df)
+    in_field = df.apply(
+        lambda r: (int(r["year"]), str(r["t1_team_norm"])) in seed_pairs
+        and (int(r["year"]), str(r["t2_team_norm"])) in seed_pairs,
+        axis=1,
+    )
+    df = df.loc[in_field].copy()
+    print(
+        f"[build_matchups] official NCAA field filter: kept {len(df)} / {n_before} rows "
+        f"(dropped {n_before - len(df)} where a team is not in Sports-Reference bracket field)"
+    )
+    s1 = seeds_tbl.rename(
+        columns={"team_norm": "t1_team_norm", "official_seed": "t1_seed"}
+    )
+    s2 = seeds_tbl.rename(
+        columns={"team_norm": "t2_team_norm", "official_seed": "t2_seed"}
+    )
+    df = df.merge(s1, on=["year", "t1_team_norm"], how="left")
+    df = df.merge(s2, on=["year", "t2_team_norm"], how="left")
+    t1_null = df["t1_seed"].isna()
+    t2_null = df["t2_seed"].isna()
+    if t1_null.any():
+        bad = df.loc[t1_null, ["year", "team1", "t1_team_norm"]].drop_duplicates()
+        print("[build_matchups] missing official seed for team1 (fix team_name_map / re-ingest):")
+        print(bad.to_string(index=False))
+    if t2_null.any():
+        bad = df.loc[t2_null, ["year", "team2", "t2_team_norm"]].drop_duplicates()
+        print("[build_matchups] missing official seed for team2 (fix team_name_map / re-ingest):")
+        print(bad.to_string(index=False))
+    if t1_null.any() or t2_null.any():
+        raise ValueError(
+            "[build_matchups] official seed join has nulls; update team_name_map.json "
+            "sports_ref/canonical/cbbpy and re-run ingest_tournament_seeds."
+        )
+    df["t1_seed"] = df["t1_seed"].astype(int)
+    df["t2_seed"] = df["t2_seed"].astype(int)
+    print(
+        f"[build_matchups] official seeds joined: t1 null={df['t1_seed'].isna().mean():.4f}, "
+        f"t2 null={df['t2_seed'].isna().mean():.4f}"
+    )
     df = apply_random_t1_t2_swap(df, seed=42)
     rate = float(df["result"].mean())
     print(f"[build_matchups] after t1/t2 balance swap: result mean={rate:.4f} (target ~0.50)")

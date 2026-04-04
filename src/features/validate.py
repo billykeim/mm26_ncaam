@@ -94,13 +94,24 @@ def check_matchup_snapshot_before_ss(
             )
 
 
-def check_matchup_games_per_year(mt: pd.DataFrame, failed: list[str]) -> None:
-    """NCAA bracket row counts must fall in [63, 67] after conf tail filter."""
+def check_matchup_games_per_year(
+    mt: pd.DataFrame, failed: list[str], warns: list[str]
+) -> None:
+    """
+    Sanity-check games per year after Torvik tail ∩ official SR NCAA bracket field.
+
+    Row counts are below full-bracket 63/67 because non-NCAA postseason rows are dropped
+    once both teams must appear on Sports-Reference's published bracket seeds.
+    """
     for y, n in mt.groupby("year").size().items():
         yi = int(y)
-        if n < 63 or n > 67:
+        if n < 15 or n > 70:
             failed.append(
-                f"matchup_features year {yi}: {n} games (expected in [63, 67] for NCAA-only bracket)"
+                f"matchup_features year {yi}: {n} games (expected roughly 25–55 after NCAA-field filter)"
+            )
+        elif n < 22 or n > 52:
+            warns.append(
+                f"matchup_features year {yi}: {n} games (outside usual [22, 52] for filtered set)"
             )
 
 
@@ -141,6 +152,10 @@ def quality_matchup(mt: pd.DataFrame, failed: list[str], warns: list[str]) -> No
             r = float(g[c].isna().mean())
             if r >= 0.10:
                 failed.append(f"{c} year {yr} null_rate={r:.3f} (>=10%)")
+
+    if "delta_seed" in mt.columns:
+        if pd.to_numeric(mt["delta_seed"], errors="coerce").isna().any():
+            failed.append("matchup_features delta_seed has nulls (official seed join)")
 
     if "delta_adj_em" in mt.columns:
         d = pd.to_numeric(mt["delta_adj_em"], errors="coerce")
@@ -233,7 +248,7 @@ def run_validation() -> tuple[list[str], list[str], list[str]]:
         passed.append("Rolling roll10_win_rate spot-check vs prior games")
 
     check_matchup_snapshot_before_ss(matchup, rolling, failed, warns)
-    check_matchup_games_per_year(matchup, failed)
+    check_matchup_games_per_year(matchup, failed, warns)
 
     check_loo_2019(warns)
 

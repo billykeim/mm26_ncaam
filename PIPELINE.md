@@ -37,6 +37,7 @@ pip install pybart CBBpy pandas beautifulsoup4 requests pyarrow fastparquet scik
 # Stage 1 — raw data ingestion (run once; cached after first run)
 python -m src.data.ingest_torvik        # Torvik ratings, four factors, player stats, time machine
 python -m src.data.ingest_coaches       # Sports-Reference coach tournament history (~30 min, rate-limited)
+python -m src.data.ingest_tournament_seeds  # Official NCAA seeds from SR brackets (~90s, rate-limited)
 python -m src.data.ingest_gamelogs      # CBBpy game-by-game box scores (~60-90 min first run)
 
 # Stage 2 — processed layer
@@ -110,6 +111,7 @@ data/raw/
     ├── coaches_cache/
     │   └── {slug}.html                      # raw HTML, never re-fetched after first pull
     ├── coaches_index.parquet                # full SR coaches index table
+    ├── tournament_seeds.parquet             # (year, team_norm, official_seed) from SR postseason brackets
     └── game_logs/
         └── {year}_{team_slug}_gamelog.parquet  # CBBpy box score per team per season
 ```

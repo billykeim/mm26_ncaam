@@ -71,6 +71,28 @@ def school_to_canonical(school: str, mapping: dict[str, Any]) -> str:
     return align_team_norm_for_game_log(s)
 
 
+def resolve_sr_bracket_school(href: str, link_text: str, mapping: dict[str, Any]) -> str:
+    """
+    Map a Sports-Reference bracket school anchor to canonical ``team_norm``.
+
+    Tries ``sports_ref`` / ``canonical`` against link text, then ``cbbpy`` against the
+    ``/cbb/schools/{slug}/men/`` path segment (SR display names sometimes differ).
+    """
+    s = str(link_text).strip()
+    for _canon, entry in mapping.items():
+        if not isinstance(entry, dict):
+            continue
+        if entry.get("sports_ref") == s or entry.get("canonical") == s:
+            return align_team_norm_for_game_log(str(entry.get("canonical", _canon)))
+    m = re.search(r"/cbb/schools/([^/]+)/men/\d{4}\.html", str(href))
+    if m:
+        slug = m.group(1).lower()
+        for _canon, entry in mapping.items():
+            if isinstance(entry, dict) and entry.get("cbbpy") == slug:
+                return align_team_norm_for_game_log(str(entry.get("canonical", _canon)))
+    return align_team_norm_for_game_log(s)
+
+
 def slugify_cbbpy(name: str) -> str:
     """Lowercase hyphenated slug similar to ESPN team keys."""
     s = re.sub(r"[^a-zA-Z0-9]+", "-", name.lower()).strip("-")
