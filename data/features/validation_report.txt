@@ -1,0 +1,19 @@
+=== MM26 PIPELINE VALIDATION ===
+PASSED (3):
+  - No 2020 rows in rolling/matchup (or year col missing)
+  - Rolling roll10_win_rate spot-check vs prior games
+  - Quality and schema checks executed (see WARNINGS)
+WARNINGS (12):
+  - No rolling rows before Selection Sunday for tournament 2008 (log_year=2008); matchup rolling may be null
+  - No rolling rows before Selection Sunday for tournament 2021 (log_year=2021); matchup rolling may be null
+  - LOO 2019: manual audit recommended — static/rolling exclude in-tournament games by design
+  - matchup_features key column t1_barthag null_rate=0.184 (>=10%)
+  - matchup_features key column t2_barthag null_rate=0.172 (>=10%)
+  - matchup_features key column t1_roll10_win_rate null_rate=0.245 (>=10%)
+  - matchup_features key column t2_roll10_win_rate null_rate=0.188 (>=10%)
+  - matchup_features key column delta_adj_em null_rate=0.193 (>=10%)
+  - matchup_features key column delta_roll10_win_rate null_rate=0.325 (>=10%)
+  - delta_adj_em max abs 45.23 outside [-40,40]
+  - result mean=0.349 not ~0.5 (expected: team1/team2 not randomly assigned)
+  - Game counts per year exceed 63/67: tournament_training_set includes multiple postseason tournaments, not NCAA-only.
+FAILED (0):
