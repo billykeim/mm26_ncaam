@@ -84,6 +84,37 @@ _DELTA_SKIP_BASES: frozenset[str] = frozenset(
 TOURNEY_PATH = PROJECT_ROOT / "data" / "raw" / "torvik" / "tournament_training_set.parquet"
 SEED_PAIR_PATH = DATA_PROCESSED / "tournament_analytics" / "seed_pair_win_rates.parquet"
 
+# Main NCAA bracket game counts (last ``ord_date`` block per season; drops NIT/CBI etc.).
+NCAA_BRACKET_GAMES_BY_SEASON: dict[int, int] = {2008: 63, 2009: 64, 2010: 64}
+NCAA_BRACKET_GAMES_DEFAULT: int = 67  # 68-team era including First Four
+
+
+def filter_ncaa_bracket_only(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Restrict to the NCAA tournament bracket only.
+
+    ``conf == 3`` rows include other postseason events earlier in ``ord_date`` order; we keep
+    the last *N* games per season (chronological tail), matching 63 / 64 / 67-game brackets.
+    """
+    if "ord_date" not in df.columns:
+        raise ValueError("filter_ncaa_bracket_only requires column ord_date")
+    d = df.copy()
+    d["ord_date"] = pd.to_numeric(d["ord_date"], errors="coerce")
+    d = d.sort_values(["season", "ord_date"], kind="mergesort")
+    parts: list[pd.DataFrame] = []
+    for season, g in d.groupby("season", sort=True):
+        y = int(season)
+        n = NCAA_BRACKET_GAMES_BY_SEASON.get(y, NCAA_BRACKET_GAMES_DEFAULT)
+        if len(g) < n:
+            print(
+                f"[build_matchups] NCAA filter season={y}: only {len(g)} rows (< {n}); keeping all"
+            )
+            parts.append(g)
+        else:
+            parts.append(g.tail(n))
+            print(f"[build_matchups] NCAA filter season={y}: kept {n} / {len(g)} rows (tail)")
+    return pd.concat(parts, ignore_index=True)
+
 
 def parse_ncaa_seeds(matchup: object) -> tuple[int | None, int | None]:
     """Parse ``t1_seed``, ``t2_seed`` when matchup lists seeds 1–16 (NCAA-style)."""
@@ -131,9 +162,11 @@ def load_tournament_base() -> pd.DataFrame:
         "team2",
         "winner",
         "matchup",
+        "ord_date",
     ]
     df = pd.read_parquet(TOURNEY_PATH, columns=use_cols)
     df = df.copy()
+    df = filter_ncaa_bracket_only(df)
     df["year"] = pd.to_numeric(df["season"], errors="coerce").astype("Int64")
     mapping = load_team_name_map()
     df["t1_team_norm"] = df["team1"].map(lambda x: torvik_to_canonical(str(x), mapping))
