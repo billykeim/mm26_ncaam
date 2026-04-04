@@ -6,6 +6,7 @@ PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent.parent
 DATA_RAW: Path = PROJECT_ROOT / "data" / "raw"
 DATA_PROCESSED: Path = PROJECT_ROOT / "data" / "processed"
 DATA_FEATURES: Path = PROJECT_ROOT / "data" / "features"
+DATA_TRAINING: Path = PROJECT_ROOT / "data" / "training"
 TORVIK_RAW: Path = DATA_RAW / "torvik"
 TORVIK_TIMEMACHINE: Path = TORVIK_RAW / "timemachine"
 TORVIK_GAME_RESULTS: Path = TORVIK_RAW / "game_results"
@@ -38,3 +39,24 @@ TIME_MACHINE_DATES: dict[int, str] = {
 TORVIK_CACHE_DIR: str = ".torvik_cache"
 
 TRAINING_YEARS: list[int] = [y for y in range(2008, 2026) if y not in (2020,)]
+
+# Selection Sunday calendar dates (YYYY-MM-DD). From DECISIONS.md; used for pre-tournament snapshots.
+SELECTION_SUNDAY_DATES: dict[int, str] = {
+    2008: "2008-03-16",
+    2009: "2009-03-15",
+    2010: "2010-03-14",
+    2011: "2011-03-13",
+    2012: "2012-03-11",
+    2013: "2013-03-17",
+    2014: "2014-03-16",
+    2015: "2015-03-15",
+    2016: "2016-03-13",
+    2017: "2017-03-12",
+    2018: "2018-03-11",
+    2019: "2019-03-17",
+    2021: "2021-03-14",
+    2022: "2022-03-13",
+    2023: "2023-03-12",
+    2024: "2024-03-17",
+    2025: "2025-03-16",
+}
