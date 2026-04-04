@@ -12,7 +12,13 @@ _PROJECT = Path(__file__).resolve().parent.parent.parent
 if str(_PROJECT) not in sys.path:
     sys.path.insert(0, str(_PROJECT))
 
-from src.utils.constants import DATA_FEATURES, DATA_PROCESSED, TORVIK_FOUR_FACTORS, TORVIK_PLAYER_STATS, TORVIK_TIMEMACHINE
+from src.utils.constants import (
+    DATA_FEATURES,
+    DATA_PROCESSED,
+    TORVIK_FOUR_FACTORS,
+    TORVIK_PLAYER_STATS,
+    TORVIK_TIMEMACHINE,
+)
 
 ADDED_DATE = "2026-03-30"
 VERSION = "v1.0"
@@ -129,11 +135,18 @@ def main() -> None:
     if seed_path.exists():
         sd = pd.read_parquet(seed_path)
         for c in sd.columns:
+            is_agg = c in (
+                "historical_win_rate",
+                "last_5yr_win_rate",
+                "upset_occurred_pct",
+            )
             reg[f"seed_pair_win_rates.{c}"] = entry(
                 "barttorvik",
                 "tournament_analytics.py seed_pair_win_rates.parquet",
-                c not in ("_source", "_is_derived"),
-                None,
+                is_agg,
+                "Aggregated from tournament_training_set outcomes by seed pair."
+                if is_agg
+                else None,
                 f"Seed-pair lookup column `{c}`.",
                 "historical_prior",
             )
@@ -161,6 +174,68 @@ def main() -> None:
                 "Merged timemachine + four_factors + player_aggregates + coach_store",
                 f"Static team-season feature `{c}`.",
                 "metadata" if c in ("is_bubble_year", "year") else "resume",
+            )
+
+    gl_path = DATA_PROCESSED / "game_log.parquet"
+    if gl_path.exists():
+        gl = pd.read_parquet(gl_path)
+        raw_gl = {
+            "pts_scored",
+            "pts_allowed",
+            "reb",
+            "ast",
+            "stl",
+            "blk",
+            "oreb",
+            "dreb",
+            "fgm",
+            "fga",
+            "ftm",
+            "fta",
+            "three_fgm",
+            "three_fga",
+            "tov",
+            "team",
+            "game_id",
+            "year",
+            "team_norm",
+            "opp_team_norm",
+        }
+        for c in gl.columns:
+            is_d = c not in raw_gl and c not in ("margin", "result")
+            reg[f"game_log.{c}"] = entry(
+                "espn/cbbpy",
+                "build_game_log.py",
+                is_d,
+                "Derived from summed box score columns." if is_d else None,
+                f"Team-game log column `{c}`.",
+                "game_log",
+            )
+
+    roll_path = DATA_FEATURES / "rolling_features.parquet"
+    if roll_path.exists():
+        rf = pd.read_parquet(roll_path)
+        for c in rf.columns:
+            reg[f"rolling_features.{c}"] = entry(
+                "derived",
+                "build_rolling.py",
+                True,
+                "Shift(1) + rolling windows on prior games only.",
+                f"Rolling pre-game feature `{c}`.",
+                "rolling",
+            )
+
+    m_path = DATA_FEATURES / "matchup_features.parquet"
+    if m_path.exists():
+        mf = pd.read_parquet(m_path)
+        for c in mf.columns:
+            reg[f"matchup_features.{c}"] = entry(
+                "derived",
+                "build_matchups.py",
+                True,
+                "Tournament row joined with static, rolling snapshot, deltas, priors.",
+                f"Matchup matrix column `{c}`.",
+                "matchup",
             )
 
     DATA_FEATURES.mkdir(parents=True, exist_ok=True)

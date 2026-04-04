@@ -22,7 +22,7 @@
 **Goal:** Build an ML model to predict NCAAM March Madness tournament outcomes via full bracket simulation
 **Repo:** https://github.com/billykeim/mm26_ncaam
 **Started:** 2026-03-29
-**Current Phase:** `✅ Setup` `🔄 Data` `⬜ Features` `⬜ Modeling` `⬜ Evaluation` `⬜ Deploy`
+**Current Phase:** `✅ Setup` `✅ Data` `🔄 Features` `⬜ Modeling` `⬜ Evaluation` `⬜ Deploy`
 
 ---
 
@@ -248,6 +248,11 @@ mm26_ncaam/
 | 2026-03-29 | Architecture decisions | All foundational decisions locked; rolling feature design finalized | Execute ingestion pipeline |
 | 2026-03-29 | Full raw ingestion | Torvik 191,304 rows; SR coaches 14,334 + index 4,096; team map 67; CBBpy gamelogs 265,867 rows (2025) + multi-year job started | build_game_log / rolling features |
 | 2026-03-29 | EDA + team map + aggregates + static + schema + tournament analytics | EDA notebook; expanded team_name_map; player_aggregates 5,971 rows; static_features 5,971×99 (four_factors joined on year+rank); schema_registry ~295 cols; tournament historical_reference + seed_pair_win_rates + viz nb; conf_wins_json in ref | Wire game_logs rolling; optional matchup prior join to static |
+| 2026-04-04 | Step 2A master game log | 196,736 team×game rows from CBBpy box scores; ESPN→canonical via mens_team_map; opponent self-join; synthetic game_date (Nov Y + 4-day steps); conf_game_flag=0 | Rolling features |
+| 2026-04-04 | Step 2B rolling features | 196,736 rows; shift(1) before all rolls; streaks, roll3/5/10, SOS adj, recency λ=0.02, Q1 opp barthag>0.85 | Matchup matrix |
+| 2026-04-04 | Step 3 matchup matrix | 2,218×494; tournament season Y joins rolling log year Y−1 (2021 exception); seed priors pooled; static-only t1/t2 (no duplicate PA/coach merges) | Validation |
+| 2026-04-04 | Step 4 validation suite | PASSED: no 2020, rolling spot-check; WARN: 2008/2021 no pre-SS rolling rows, key nulls ~17–33%, delta_adj_em tail, result mean 0.35 | Train XGBoost v1 |
+| 2026-04-04 | Step 5 training splits | 16 LOO folds; train/test parquet per year; feature_list_v1.txt 456 numeric features | Fit + calibrate model |
 
 ---
 
