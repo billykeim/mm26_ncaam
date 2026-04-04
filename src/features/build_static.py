@@ -24,6 +24,23 @@ from src.utils.name_normalize import load_team_name_map, school_to_canonical, to
 from src.features import build_player_aggregates as bpa
 
 
+def _fix_team_ratings_column_swap(tm: pd.DataFrame) -> pd.DataFrame:
+    """
+    Torvik ``team_ratings`` CSVs (2008–2010 pretournament) mislabel columns: the school name
+    sits in ``rank`` and ``team`` holds a conference abbreviation. ``time_machine`` years use
+    numeric ``rank`` and ``team`` for the school. We rewrite ``team`` from the name column,
+    then set ``rank`` to row order ``1..n`` per year so four_factors merges on ``(year, rank)``.
+    """
+    out = tm.copy()
+    avail = pd.to_numeric(out.get("timemachine_available", 1), errors="coerce").fillna(1).astype(
+        int
+    )
+    name_src = np.where(avail == 0, out["rank"].astype(str), out["team"].astype(str))
+    out["team"] = name_src
+    out["rank"] = out.groupby("year", sort=False).cumcount() + 1
+    return out
+
+
 def _log_nulls(df: pd.DataFrame, label: str) -> None:
     """Print row count and null rate per column (top 15)."""
     n = len(df)
@@ -76,6 +93,7 @@ def merge_static(
 
     tm = load_timemachine_stack(years)
     _log_nulls(tm, "timemachine raw")
+    tm = _fix_team_ratings_column_swap(tm)
     tm["team_norm"] = tm["team"].map(lambda x: torvik_to_canonical(str(x), mapping))
     tm["rank"] = pd.to_numeric(tm["rank"], errors="coerce").astype("Int64")
 
