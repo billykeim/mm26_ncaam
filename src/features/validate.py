@@ -97,21 +97,12 @@ def check_matchup_snapshot_before_ss(
 def check_matchup_games_per_year(
     mt: pd.DataFrame, failed: list[str], warns: list[str]
 ) -> None:
-    """
-    Sanity-check games per year after Torvik tail ∩ official SR NCAA bracket field.
-
-    Row counts are below full-bracket 63/67 because non-NCAA postseason rows are dropped
-    once both teams must appear on Sports-Reference's published bracket seeds.
-    """
+    """Full SR bracket: 63–67 games per tournament year (64 early years with one play-in)."""
     for y, n in mt.groupby("year").size().items():
         yi = int(y)
-        if n < 15 or n > 70:
+        if n < 63 or n > 67:
             failed.append(
-                f"matchup_features year {yi}: {n} games (expected roughly 25–55 after NCAA-field filter)"
-            )
-        elif n < 22 or n > 52:
-            warns.append(
-                f"matchup_features year {yi}: {n} games (outside usual [22, 52] for filtered set)"
+                f"matchup_features year {yi}: {n} games (expected in [63, 67] for full NCAA bracket)"
             )
 
 
@@ -249,6 +240,10 @@ def run_validation() -> tuple[list[str], list[str], list[str]]:
 
     check_matchup_snapshot_before_ss(matchup, rolling, failed, warns)
     check_matchup_games_per_year(matchup, failed, warns)
+    if "round" in matchup.columns:
+        r = pd.to_numeric(matchup["round"], errors="coerce")
+        if r.min() < 0 or r.max() > 6 or r.isna().any():
+            failed.append("matchup_features round must be in [0, 6] with no nulls")
 
     check_loo_2019(warns)
 

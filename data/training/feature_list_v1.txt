@@ -120,6 +120,7 @@ low_tempo_coin_flip
 midmajor_matchup
 pace_variance_flag
 projected_tempo
+round
 sample_size
 seed_prior_historical_win_rate
 seed_prior_last_5yr_win_rate

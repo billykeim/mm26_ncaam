@@ -54,6 +54,7 @@ def feature_columns(df: pd.DataFrame) -> list[str]:
                 "sample_size",
                 "t1_coach_is_first_tourn",
                 "t2_coach_is_first_tourn",
+                "round",
             ):
                 continue
         out.append(c)

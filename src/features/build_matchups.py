@@ -15,9 +15,8 @@ if str(_PROJECT) not in sys.path:
 from src.utils.constants import (
     DATA_FEATURES,
     DATA_PROCESSED,
-    PROJECT_ROOT,
     SELECTION_SUNDAY_DATES,
-    TOURNAMENT_SEEDS_PATH,
+    TOURNAMENT_RESULTS_PATH,
     TRAINING_YEARS,
 )
 
@@ -38,9 +37,15 @@ MATCHUP_DROP_COLS: frozenset[str] = frozenset(
         "delta_con_poss",
         "ord_date",
         "season",
+        "t1_score",
+        "t2_score",
     }
 )
-from src.utils.name_normalize import load_team_name_map, torvik_to_canonical
+from src.utils.name_normalize import (
+    load_team_name_map,
+    school_to_canonical,
+    torvik_to_canonical,
+)
 
 # Do not auto-delta game-log / bookkeeping columns merged from rolling snapshots.
 _DELTA_SKIP_BASES: frozenset[str] = frozenset(
@@ -104,54 +109,28 @@ _DELTA_SKIP_BASES: frozenset[str] = frozenset(
         "con_poss",
         "ord_date",
         "season",
+        "score",
     }
 )
 
-TOURNEY_PATH = PROJECT_ROOT / "data" / "raw" / "torvik" / "tournament_training_set.parquet"
 SEED_PAIR_PATH = DATA_PROCESSED / "tournament_analytics" / "seed_pair_win_rates.parquet"
-
-# Main NCAA bracket game counts (last ``ord_date`` block per season; drops NIT/CBI etc.).
-NCAA_BRACKET_GAMES_BY_SEASON: dict[int, int] = {2008: 63, 2009: 64, 2010: 64}
-NCAA_BRACKET_GAMES_DEFAULT: int = 67  # 68-team era including First Four
-
-
-def filter_ncaa_bracket_only(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Restrict to the NCAA tournament bracket only.
-
-    ``conf == 3`` rows include other postseason events earlier in ``ord_date`` order; we keep
-    the last *N* games per season (chronological tail), matching 63 / 64 / 67-game brackets.
-    """
-    if "ord_date" not in df.columns:
-        raise ValueError("filter_ncaa_bracket_only requires column ord_date")
-    d = df.copy()
-    d["ord_date"] = pd.to_numeric(d["ord_date"], errors="coerce")
-    d = d.sort_values(["season", "ord_date"], kind="mergesort")
-    parts: list[pd.DataFrame] = []
-    for season, g in d.groupby("season", sort=True):
-        y = int(season)
-        n = NCAA_BRACKET_GAMES_BY_SEASON.get(y, NCAA_BRACKET_GAMES_DEFAULT)
-        if len(g) < n:
-            print(
-                f"[build_matchups] NCAA filter season={y}: only {len(g)} rows (< {n}); keeping all"
-            )
-            parts.append(g)
-        else:
-            parts.append(g.tail(n))
-            print(f"[build_matchups] NCAA filter season={y}: kept {n} / {len(g)} rows (tail)")
-    return pd.concat(parts, ignore_index=True)
 
 
 def apply_random_t1_t2_swap(df: pd.DataFrame, seed: int = 42) -> pd.DataFrame:
     """
     Swap team1/team2 (and aligned norms, seeds, result) on ~50% of rows for label balance.
 
-    Torvik often orders the stronger team as team1, skewing ``result`` upward; swapping
-    breaks that bias while preserving the true winner in ``winner``.
+    Uses a fixed-size random subset (exactly ``n//2`` rows) so the swap mask is not
+    correlated with row order / outcome (avoids biased ``result`` mean vs i.i.d. Bernoulli).
     """
     out = df.copy()
     rng = np.random.RandomState(seed)
-    w = rng.random(len(out)) < 0.5
+    n = len(out)
+    if n == 0:
+        return out
+    perm = rng.permutation(n)
+    w = np.zeros(n, dtype=bool)
+    w[perm[: n // 2]] = True
     if not w.any():
         return out
     t1 = out.loc[w, "team1"].copy()
@@ -164,86 +143,85 @@ def apply_random_t1_t2_swap(df: pd.DataFrame, seed: int = 42) -> pd.DataFrame:
         s1 = out.loc[w, "t1_seed"].copy()
         out.loc[w, "t1_seed"] = out.loc[w, "t2_seed"].values
         out.loc[w, "t2_seed"] = s1.values
+    if "t1_score" in out.columns and "t2_score" in out.columns:
+        sc1 = out.loc[w, "t1_score"].copy()
+        out.loc[w, "t1_score"] = out.loc[w, "t2_score"].values
+        out.loc[w, "t2_score"] = sc1.values
     out.loc[w, "result"] = (1 - out.loc[w, "result"].astype(int)).astype(np.int8)
     return out
 
 
+def load_coach_store_agg(mapping: dict) -> pd.DataFrame:
+    """Coach counts keyed by ``(team_norm, year)`` (same aggregation as ``build_static``)."""
+    coach_path = DATA_PROCESSED / "coach_store.parquet"
+    if not coach_path.exists():
+        print(f"[build_matchups] WARN: {coach_path} missing; skipping coach supplement merge")
+        return pd.DataFrame()
+    cs = pd.read_parquet(coach_path)
+    cs["team_norm"] = cs["school"].map(lambda s: school_to_canonical(str(s), mapping))
+    cs_agg = (
+        cs.groupby(["team_norm", "season_year"], as_index=False)
+        .agg(
+            {
+                "coach_tourn_appearances": "max",
+                "coach_final_four_count": "max",
+                "coach_champ_count": "max",
+            }
+        )
+    )
+    cs_agg = cs_agg.rename(columns={"season_year": "year"})
+    cs_agg["year"] = pd.to_numeric(cs_agg["year"], errors="coerce").astype(int)
+    return cs_agg.drop_duplicates(subset=["team_norm", "year"], keep="first")
+
+
+def load_player_aggregates_norm(mapping: dict) -> pd.DataFrame:
+    """Player aggregate rows with ``team_norm`` (Torvik names → canonical)."""
+    pa_path = DATA_PROCESSED / "player_aggregates.parquet"
+    if not pa_path.exists():
+        print(f"[build_matchups] WARN: {pa_path} missing; skipping player supplement merge")
+        return pd.DataFrame()
+    pa = pd.read_parquet(pa_path)
+    pa["team_norm"] = pa["team"].map(lambda x: torvik_to_canonical(str(x), mapping))
+    return pa.drop_duplicates(subset=["team_norm", "year"], keep="first")
+
+
+def merge_supplement_prefixed(
+    mt: pd.DataFrame, tab: pd.DataFrame, prefix: str
+) -> pd.DataFrame:
+    """Left-merge columns from ``tab`` that are not already on ``mt`` (after ``t1_/t2_`` prefix)."""
+    if tab.empty:
+        return mt
+    pre = _prefix_static(tab, prefix)
+    merge_on = [f"{prefix}_team_norm", "year"]
+    add = [c for c in pre.columns if c not in mt.columns and c not in merge_on]
+    if not add:
+        return mt
+    return mt.merge(pre[merge_on + add], on=merge_on, how="left")
+
+
 def load_tournament_base() -> pd.DataFrame:
-    """Tournament rows with ``year``, team norms, and binary ``result`` (1 = team1 won)."""
-    use_cols = [
-        "muid",
-        "season",
-        "team1",
-        "team2",
-        "winner",
-        "matchup",
-        "ord_date",
-    ]
-    df = pd.read_parquet(TOURNEY_PATH, columns=use_cols)
-    df = df.copy()
-    df = filter_ncaa_bracket_only(df)
-    df["year"] = pd.to_numeric(df["season"], errors="coerce").astype("Int64")
-    mapping = load_team_name_map()
-    df["t1_team_norm"] = df["team1"].map(lambda x: torvik_to_canonical(str(x), mapping))
-    df["t2_team_norm"] = df["team2"].map(lambda x: torvik_to_canonical(str(x), mapping))
-    df["result"] = (df["winner"].astype(str) == df["team1"].astype(str)).astype(np.int8)
-    df["game_id"] = df["muid"].astype(str)
-    if not TOURNAMENT_SEEDS_PATH.exists():
+    """
+    Full NCAA bracket from Sports-Reference ``tournament_results.parquet``.
+
+    Rows already have ``t1_*`` / ``t2_*`` with better seed as ``t1``; ``round`` 0–6.
+    """
+    if not TOURNAMENT_RESULTS_PATH.exists():
         raise FileNotFoundError(
-            f"Official seeds missing: {TOURNAMENT_SEEDS_PATH}. "
-            "Run: python -m src.data.ingest_tournament_seeds"
+            f"Tournament results missing: {TOURNAMENT_RESULTS_PATH}. "
+            "Run: python -m src.data.ingest_tournament_results"
         )
-    seeds_tbl = pd.read_parquet(TOURNAMENT_SEEDS_PATH)
-    seeds_tbl = seeds_tbl.drop_duplicates(subset=["year", "team_norm"], keep="first")
-    seeds_tbl["year"] = pd.to_numeric(seeds_tbl["year"], errors="coerce").astype(int)
-    seeds_tbl["team_norm"] = seeds_tbl["team_norm"].astype(str)
-    seeds_tbl["official_seed"] = pd.to_numeric(seeds_tbl["official_seed"], errors="coerce").astype(
-        int
-    )
-    seed_pairs: set[tuple[int, str]] = set(
-        zip(seeds_tbl["year"].tolist(), seeds_tbl["team_norm"].tolist())
-    )
+    df = pd.read_parquet(TOURNAMENT_RESULTS_PATH)
+    df = df.copy()
     df["year"] = pd.to_numeric(df["year"], errors="coerce").astype(int)
-    n_before = len(df)
-    in_field = df.apply(
-        lambda r: (int(r["year"]), str(r["t1_team_norm"])) in seed_pairs
-        and (int(r["year"]), str(r["t2_team_norm"])) in seed_pairs,
-        axis=1,
-    )
-    df = df.loc[in_field].copy()
-    print(
-        f"[build_matchups] official NCAA field filter: kept {len(df)} / {n_before} rows "
-        f"(dropped {n_before - len(df)} where a team is not in Sports-Reference bracket field)"
-    )
-    s1 = seeds_tbl.rename(
-        columns={"team_norm": "t1_team_norm", "official_seed": "t1_seed"}
-    )
-    s2 = seeds_tbl.rename(
-        columns={"team_norm": "t2_team_norm", "official_seed": "t2_seed"}
-    )
-    df = df.merge(s1, on=["year", "t1_team_norm"], how="left")
-    df = df.merge(s2, on=["year", "t2_team_norm"], how="left")
-    t1_null = df["t1_seed"].isna()
-    t2_null = df["t2_seed"].isna()
-    if t1_null.any():
-        bad = df.loc[t1_null, ["year", "team1", "t1_team_norm"]].drop_duplicates()
-        print("[build_matchups] missing official seed for team1 (fix team_name_map / re-ingest):")
-        print(bad.to_string(index=False))
-    if t2_null.any():
-        bad = df.loc[t2_null, ["year", "team2", "t2_team_norm"]].drop_duplicates()
-        print("[build_matchups] missing official seed for team2 (fix team_name_map / re-ingest):")
-        print(bad.to_string(index=False))
-    if t1_null.any() or t2_null.any():
-        raise ValueError(
-            "[build_matchups] official seed join has nulls; update team_name_map.json "
-            "sports_ref/canonical/cbbpy and re-run ingest_tournament_seeds."
-        )
-    df["t1_seed"] = df["t1_seed"].astype(int)
-    df["t2_seed"] = df["t2_seed"].astype(int)
-    print(
-        f"[build_matchups] official seeds joined: t1 null={df['t1_seed'].isna().mean():.4f}, "
-        f"t2 null={df['t2_seed'].isna().mean():.4f}"
-    )
+    df["round"] = pd.to_numeric(df["round"], errors="coerce").astype(int)
+    df["t1_team_norm"] = df["t1_team_norm"].astype(str)
+    df["t2_team_norm"] = df["t2_team_norm"].astype(str)
+    df["t1_seed"] = pd.to_numeric(df["t1_seed"], errors="coerce").astype(int)
+    df["t2_seed"] = pd.to_numeric(df["t2_seed"], errors="coerce").astype(int)
+    df["result"] = pd.to_numeric(df["result"], errors="coerce").astype(np.int8)
+    df["game_id"] = df["game_id"].astype(str)
+    df["team1"] = df["t1_team_norm"]
+    df["team2"] = df["t2_team_norm"]
     df = apply_random_t1_t2_swap(df, seed=42)
     rate = float(df["result"].mean())
     print(f"[build_matchups] after t1/t2 balance swap: result mean={rate:.4f} (target ~0.50)")
@@ -519,6 +497,8 @@ def build_matchups() -> pd.DataFrame:
     print(f"[build_matchups] rolling snapshot rows={len(roll_snap)}")
 
     mapping = load_team_name_map()
+    coach_agg = load_coach_store_agg(mapping)
+    pa_tab = load_player_aggregates_norm(mapping)
 
     mt = base.merge(
         _prefix_static(static, "t1"),
@@ -526,6 +506,11 @@ def build_matchups() -> pd.DataFrame:
         how="left",
     )
     mt = mt.merge(_prefix_static(static, "t2"), on=["t2_team_norm", "year"], how="left")
+
+    mt = merge_supplement_prefixed(mt, coach_agg, "t1")
+    mt = merge_supplement_prefixed(mt, coach_agg, "t2")
+    mt = merge_supplement_prefixed(mt, pa_tab, "t1")
+    mt = merge_supplement_prefixed(mt, pa_tab, "t2")
 
     r1 = _prefix_rolling_snap(roll_snap, "t1")
     r2 = _prefix_rolling_snap(roll_snap, "t2")
@@ -553,14 +538,54 @@ def build_matchups() -> pd.DataFrame:
     return mt
 
 
+def print_round_distribution(mt: pd.DataFrame) -> None:
+    """Log ``round`` counts across all tournament rows (for experiment log)."""
+    if "round" not in mt.columns:
+        return
+    print("[build_matchups] round distribution (all years):")
+    print(mt.groupby("round").size().to_string())
+
+
+def print_2025_seed_prior_ranking(mt: pd.DataFrame) -> None:
+    """
+    Sanity: rank 2025 teams by mean pooled seed-prior P(win) when listed as t1 / 1−P as t2.
+
+    Uses ``historical_win_rate`` after seed-pair join (not a fitted model).
+    """
+    sub = mt[mt["year"] == 2025]
+    if sub.empty or "historical_win_rate" not in sub.columns:
+        print("[build_matchups] 2025 seed-prior sanity: no rows or missing historical_win_rate")
+        return
+    rows: list[tuple[str, float]] = []
+    for _, r in sub.iterrows():
+        p = pd.to_numeric(r["historical_win_rate"], errors="coerce")
+        pv = float(p) if pd.notna(p) else 0.5
+        rows.append((str(r["t1_team_norm"]), pv))
+        rows.append((str(r["t2_team_norm"]), 1.0 - pv))
+    s = (
+        pd.DataFrame(rows, columns=["team", "p"])
+        .groupby("team", as_index=False)["p"]
+        .mean()
+        .sort_values("p", ascending=False)
+    )
+    print("[build_matchups] 2025 — top 5 teams by mean seed-prior win proxy:")
+    print(s.head(5).to_string(index=False))
+    print("[build_matchups] 2025 — bottom 5 teams by mean seed-prior win proxy:")
+    print(s.tail(5).to_string(index=False))
+
+
 def main() -> None:
     mt = build_matchups()
+    print_round_distribution(mt)
+    print_2025_seed_prior_ranking(mt)
     DATA_FEATURES.mkdir(parents=True, exist_ok=True)
     out = DATA_FEATURES / "matchup_features.parquet"
     mt.to_parquet(out, index=False)
     print(f"[build_matchups] wrote {out} shape={mt.shape}")
     print(f"[build_matchups] years: {sorted(mt['year'].dropna().unique().tolist())}")
     print(f"[build_matchups] games_per_year:\n{mt.groupby('year').size().to_string()}")
+    ds = float(mt["delta_seed"].isna().mean()) if "delta_seed" in mt.columns else float("nan")
+    print(f"[build_matchups] delta_seed null rate={ds:.4f}")
     nulls = mt.isna().mean().sort_values(ascending=False).head(12)
     print(f"[build_matchups] worst null rates:\n{nulls.to_string()}")
 

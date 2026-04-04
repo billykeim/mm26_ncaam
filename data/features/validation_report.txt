@@ -5,6 +5,6 @@ PASSED (3):
   - Quality and schema checks executed (see WARNINGS)
 WARNINGS (3):
   - LOO 2019: manual audit recommended — static/rolling exclude in-tournament games by design
-  - t1_team_norm: 17 values not in team_name_map canonical/torvik set
-  - t2_team_norm: 19 values not in team_name_map canonical/torvik set
+  - t1_team_norm: 83 values not in team_name_map canonical/torvik set
+  - t2_team_norm: 70 values not in team_name_map canonical/torvik set
 FAILED (0):

@@ -5615,6 +5615,19 @@
     "nullable": true,
     "expected_range": null
   },
+  "matchup_features.round": {
+    "source": "sports_reference",
+    "endpoint": "ingest_tournament_results.py",
+    "is_derived": false,
+    "derivation": "NCAA tournament round from SR bracket: 0=First Four, 1=R64, …, 6=championship.",
+    "rolling_window": null,
+    "added_version": "v1.1",
+    "added_date": "2026-03-29",
+    "description": "Tournament round index; used as model feature (upset rate varies by round).",
+    "feature_group": "metadata",
+    "nullable": false,
+    "expected_range": [0, 6]
+  },
   "matchup_features.t1_seed": {
     "source": "derived",
     "endpoint": "build_matchups.py",

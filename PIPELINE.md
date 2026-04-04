@@ -38,6 +38,7 @@ pip install pybart CBBpy pandas beautifulsoup4 requests pyarrow fastparquet scik
 python -m src.data.ingest_torvik        # Torvik ratings, four factors, player stats, time machine
 python -m src.data.ingest_coaches       # Sports-Reference coach tournament history (~30 min, rate-limited)
 python -m src.data.ingest_tournament_seeds  # Official NCAA seeds from SR brackets (~90s, rate-limited)
+python -m src.data.ingest_tournament_results  # Full bracket game rows from SR HTML (cached; ~90s first run)
 python -m src.data.ingest_gamelogs      # CBBpy game-by-game box scores (~60-90 min first run)
 
 # Stage 2 — processed layer
@@ -112,6 +113,8 @@ data/raw/
     │   └── {slug}.html                      # raw HTML, never re-fetched after first pull
     ├── coaches_index.parquet                # full SR coaches index table
     ├── tournament_seeds.parquet             # (year, team_norm, official_seed) from SR postseason brackets
+    ├── tournament_results.parquet           # one row per NCAA tournament game (labels, seeds, round, scores)
+    ├── tournament_results_cache/            # {year}.html — SR postseason pages (optional local cache)
     └── game_logs/
         └── {year}_{team_slug}_gamelog.parquet  # CBBpy box score per team per season
 ```
@@ -148,9 +151,9 @@ data/features/
 │   # Key: (team_norm, year)
 │
 ├── matchup_features.parquet        # final training-ready table
-│   # Rows: ~1,200 (67 tournament games × 18 years, excl. 2020)
-│   # Key: (year, game_id, t1_team, t2_team)
-│   # Columns: t1_* | t2_* | delta_* | result | metadata
+│   # Rows: ~1,130 (full SR bracket: 64 games × 2008–10 + 67 × 2011–25, excl. 2020)
+│   # Key: (year, game_id, t1_team_norm, t2_team_norm)
+│   # Columns: t1_* | t2_* | delta_* | result | round | metadata
 │
 └── schema_registry.json            # field catalogue (see Section 4)
 ```
@@ -335,7 +338,7 @@ metadata               — year, game_id, seed, is_bubble_year, etc.
 | `_source` | `"sports-reference.com/cbb/coaches/"` |
 
 ### 5f. Matchup Differential Features
-*In matchup_features.parquet. t1 = higher seed (or home team if neutral); t2 = opponent.*
+*In matchup_features.parquet. Labels come from ``tournament_results.parquet`` (SR bracket). Before the balance swap, t1 is the better (lower) seed; a random 50% of rows swap t1/t2 for label balance.*
 *Every t1_*/t2_* static/rolling feature also has a delta_* counterpart = t1 − t2.*
 
 Key delta features (★ = highest expected importance):

@@ -257,6 +257,8 @@ mm26_ncaam/
 | 2026-03-29 | FIX 4 rolling + validate | Synthetic `game_date` linear in [Nov Y−1, Selection Sunday); rolling snapshot `year ==` tournament year; `align_team_norm_for_game_log` + map tweaks; validate FAILED games/year [63,67] + roll10 nulls | Modeling |
 | 2026-03-29 | Pre-modeling data quality | Legacy `team_ratings` remap (adjoe/adjde/barthag); NCAA seeds parse+propagate+barthag impute; `historical_win_rate`/`sample_size` from seed priors; drop fun/con_/ord_date/season; coach 0-fill + `coach_is_first_tourn`; `delta_adj_em` clip ±40 | Fit XGBoost v1 |
 | 2026-03-29 | Official SR NCAA seeds | `ingest_tournament_seeds.py` → `data/raw/sports_ref/tournament_seeds.parquet` (2008–2025, skip 2020); `build_matchups` drops barthag imputation, joins official seeds, keeps rows where both teams are on SR bracket (563 games); `delta_seed` 0% null; validate + 16 LOO splits rebuilt; `validate.py` games/year + `delta_seed` checks updated | Optional: stricter Torvik NCAA-only label filter |
+| 2026-03-29 | SR full bracket game labels | `ingest_tournament_results.py` → `tournament_results.parquet` + HTML cache; 1130 games (64×2008–10 + 67×2011–25 excl. 2020); rounds 0–6; 2021 forfeit without boxscore; `build_matchups` reads SR results; feature `round`; 50% swap via permutation mask; final scores excluded from model (`delta_score` skipped) | Modeling |
+| 2026-03-29 | Bracket round counts | FF=59, R64=544, R32=272, S16=136, E8=68, F4=34, title=17 (17 tourney years) | — |
 
 ---
 
