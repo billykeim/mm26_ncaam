@@ -53,6 +53,11 @@ python -m src.features.validate         # Schema audit, leakage check, null rate
 # Stage 4 — training splits
 python -m src.models.build_training     # Leave-one-tournament-out splits → data/training/
 
+# Stage 5 — modeling v1 (after Stage 4)
+python -m src.models.baseline_lr        # Seed-only LR baseline → data/outputs/predictions/baseline_lr_predictions.parquet
+python -m src.models.xgboost_model      # XGBoost LOO + full model → xgb_v1_predictions.parquet, feature_importance_log/, xgb_v1_full.json
+python -m src.models.calibration        # Platt scaling → calibration_plot.png, xgb_v1_calibrated_predictions.parquet
+
 # Re-run after any source data update:
 # Only stages 2+ need to re-run if raw data unchanged
 # Only stage 3+ need to re-run if rolling/static features unchanged
@@ -163,9 +168,24 @@ data/features/
 ```
 data/training/
 ├── train_{year}.parquet            # train on all years except {year}
-│   # Used for leave-one-tournament-out CV
+├── test_{year}.parquet             # held-out tournament year
+├── feature_list_v1.txt             # numeric feature column names
 └── feature_importance_log/
-    └── {year}_importance.csv       # XGBoost feature importances per fold
+    └── {year}_importance.csv       # XGBoost gain importances per LOO fold
+```
+
+### data/outputs/ — predictions + plots
+
+```
+data/outputs/
+├── predictions/
+│   ├── baseline_lr_predictions.parquet
+│   ├── xgb_v1_predictions.parquet
+│   └── xgb_v1_calibrated_predictions.parquet
+├── models/
+│   ├── xgb_v1_full.json            # XGBoost trained on all LOO years
+│   └── xgb_v1_full_meta.json       # feature column list + row count
+└── calibration_plot.png            # pooled LOO reliability (Platt-calibrated)
 ```
 
 ---

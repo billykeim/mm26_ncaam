@@ -22,7 +22,7 @@
 **Goal:** Build an ML model to predict NCAAM March Madness tournament outcomes via full bracket simulation
 **Repo:** https://github.com/billykeim/mm26_ncaam
 **Started:** 2026-03-29
-**Current Phase:** `✅ Setup` `✅ Data` `🔄 Features` `⬜ Modeling` `⬜ Evaluation` `⬜ Deploy`
+**Current Phase:** `✅ Setup` `✅ Data` `✅ Features` `✅ Modeling v1` `⬜ Evaluation` `⬜ Deploy`
 
 ---
 
@@ -259,6 +259,10 @@ mm26_ncaam/
 | 2026-03-29 | Official SR NCAA seeds | `ingest_tournament_seeds.py` → `data/raw/sports_ref/tournament_seeds.parquet` (2008–2025, skip 2020); `build_matchups` drops barthag imputation, joins official seeds, keeps rows where both teams are on SR bracket (563 games); `delta_seed` 0% null; validate + 16 LOO splits rebuilt; `validate.py` games/year + `delta_seed` checks updated | Optional: stricter Torvik NCAA-only label filter |
 | 2026-03-29 | SR full bracket game labels | `ingest_tournament_results.py` → `tournament_results.parquet` + HTML cache; 1130 games (64×2008–10 + 67×2011–25 excl. 2020); rounds 0–6; 2021 forfeit without boxscore; `build_matchups` reads SR results; feature `round`; 50% swap via permutation mask; final scores excluded from model (`delta_score` skipped) | Modeling |
 | 2026-03-29 | Bracket round counts | FF=59, R64=544, R32=272, S16=136, E8=68, F4=34, title=17 (17 tourney years) | — |
+| 2026-04-04 | Step 6 seed-only LR baseline | LOO 16 folds: mean acc **0.692**, AUC **0.770**, log-loss **0.576**, Brier **0.197**; `baseline_lr_predictions.parquet` | XGB v1 |
+| 2026-04-04 | Step 7 XGBoost v1 | LOO: mean acc **0.897**, AUC **0.963**, log-loss **0.249**, Brier **0.075** vs baseline **+20.5%** acc; `xgb_v1_predictions.parquet`, `feature_importance_log/`, `xgb_v1_full.json` | Calibration + audit metrics |
+| 2026-04-04 | Step 8 Platt calibration | Per-fold Platt on train raw probs: mean Brier **0.075 → 0.081**, log-loss **0.249 → 0.281**; `calibration_plot.png`, `xgb_v1_calibrated_predictions.parquet` | Monte Carlo harness |
+| 2026-04-04 | Step 9 results notebook | `notebooks/03_model_results.ipynb` — comparison table, importance, year/round accuracy, calibration, upset slice | Bracket simulation |
 
 ---
 
