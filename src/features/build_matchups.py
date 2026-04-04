@@ -20,6 +20,26 @@ from src.utils.constants import (
     SELECTION_SUNDAY_DATES,
     TRAINING_YEARS,
 )
+
+# Dropped from written matchup matrix (no predictive value or wrong scale).
+MATCHUP_DROP_COLS: frozenset[str] = frozenset(
+    {
+        "t1_fun",
+        "t2_fun",
+        "delta_fun",
+        "t1_con_pf",
+        "t2_con_pf",
+        "delta_con_pf",
+        "t1_con_pa",
+        "t2_con_pa",
+        "delta_con_pa",
+        "t1_con_poss",
+        "t2_con_poss",
+        "delta_con_poss",
+        "ord_date",
+        "season",
+    }
+)
 from src.utils.name_normalize import load_team_name_map, torvik_to_canonical
 
 # Do not auto-delta game-log / bookkeeping columns merged from rolling snapshots.
@@ -78,6 +98,12 @@ _DELTA_SKIP_BASES: frozenset[str] = frozenset(
         "tov_rate_s",
         "opp_barthag_s",
         "team_barthag_season",
+        "fun",
+        "con_pf",
+        "con_pa",
+        "con_poss",
+        "ord_date",
+        "season",
     }
 )
 
@@ -118,13 +144,81 @@ def filter_ncaa_bracket_only(df: pd.DataFrame) -> pd.DataFrame:
 
 def parse_ncaa_seeds(matchup: object) -> tuple[int | None, int | None]:
     """Parse ``t1_seed``, ``t2_seed`` when matchup lists seeds 1–16 (NCAA-style)."""
-    m = re.match(r"^\s*(\d{1,2})\s+.+?\s+(?:vs\.|at)\s*(\d{1,2})\s+", str(matchup))
+    m = re.match(
+        r"^\s*(\d{1,2})\s+.+?\s+(?:vs\.|at)\s*(\d{1,2})\s+",
+        str(matchup),
+        flags=re.IGNORECASE,
+    )
     if not m:
         return None, None
     a, b = int(m.group(1)), int(m.group(2))
     if 1 <= a <= 16 and 1 <= b <= 16:
         return a, b
     return None, None
+
+
+def fill_ncaa_seeds_from_tournament(df: pd.DataFrame, static: pd.DataFrame) -> pd.DataFrame:
+    """
+    NCAA seeds: (1) parse ``matchup`` when both labels are 1–16; (2) propagate to every
+    ``(year, team_norm)`` seen in those rows; (3) impute remaining teams from pretournament
+    ``barthag`` strength within the tournament field (1 = strongest), clipped to 1–16.
+    """
+    out = df.copy()
+    st = static.drop_duplicates(subset=["team_norm", "year"], keep="first").copy()
+    st["year"] = pd.to_numeric(st["year"], errors="coerce").astype(int)
+    st["barthag"] = pd.to_numeric(st["barthag"], errors="coerce")
+
+    lookup: dict[tuple[int, str], int] = {}
+    for _, r in out.iterrows():
+        a, b = parse_ncaa_seeds(r["matchup"])
+        if a is not None and b is not None:
+            yi = int(r["year"])
+            lookup[(yi, str(r["t1_team_norm"]))] = int(a)
+            lookup[(yi, str(r["t2_team_norm"]))] = int(b)
+
+    years = pd.to_numeric(out["year"], errors="coerce").astype(int).unique()
+    imputed: dict[tuple[int, str], int] = {}
+    for yi in years:
+        if pd.isna(yi):
+            continue
+        yi = int(yi)
+        sub = out[out["year"] == yi]
+        teams = np.unique(
+            np.concatenate(
+                [sub["t1_team_norm"].astype(str).values, sub["t2_team_norm"].astype(str).values]
+            )
+        )
+        rows: list[tuple[str, float]] = []
+        bh_by = st.loc[st["year"] == yi].set_index("team_norm")["barthag"]
+        for t in teams:
+            v = bh_by.get(t, np.nan)
+            if pd.notna(v):
+                rows.append((t, float(v)))
+        rows.sort(key=lambda x: -x[1])
+        n = len(rows)
+        for i, (t, _) in enumerate(rows):
+            imputed[(yi, t)] = int(np.clip(np.ceil(16 * (i + 1) / max(n, 1)), 1, 16))
+        for t in teams:
+            if (yi, t) not in imputed:
+                imputed[(yi, t)] = 8
+
+    ns1: list[int] = []
+    ns2: list[int] = []
+    for _, r in out.iterrows():
+        yi = int(r["year"])
+        n1 = str(r["t1_team_norm"])
+        n2 = str(r["t2_team_norm"])
+        s1 = lookup.get((yi, n1))
+        if s1 is None:
+            s1 = imputed.get((yi, n1), 8)
+        s2 = lookup.get((yi, n2))
+        if s2 is None:
+            s2 = imputed.get((yi, n2), 8)
+        ns1.append(int(s1))
+        ns2.append(int(s2))
+    out["t1_seed"] = ns1
+    out["t2_seed"] = ns2
+    return out
 
 
 def apply_random_t1_t2_swap(df: pd.DataFrame, seed: int = 42) -> pd.DataFrame:
@@ -172,10 +266,20 @@ def load_tournament_base() -> pd.DataFrame:
     df["t1_team_norm"] = df["team1"].map(lambda x: torvik_to_canonical(str(x), mapping))
     df["t2_team_norm"] = df["team2"].map(lambda x: torvik_to_canonical(str(x), mapping))
     df["result"] = (df["winner"].astype(str) == df["team1"].astype(str)).astype(np.int8)
-    seeds = df["matchup"].map(parse_ncaa_seeds)
-    df["t1_seed"] = seeds.map(lambda x: x[0])
-    df["t2_seed"] = seeds.map(lambda x: x[1])
     df["game_id"] = df["muid"].astype(str)
+    static_path = DATA_FEATURES / "static_features.parquet"
+    if static_path.exists():
+        static_pre = pd.read_parquet(static_path)
+        df = fill_ncaa_seeds_from_tournament(df, static_pre)
+        print(
+            f"[build_matchups] seeds filled: t1 null={df['t1_seed'].isna().mean():.4f}, "
+            f"t2 null={df['t2_seed'].isna().mean():.4f}"
+        )
+    else:
+        seeds = df["matchup"].map(parse_ncaa_seeds)
+        df["t1_seed"] = seeds.map(lambda x: x[0])
+        df["t2_seed"] = seeds.map(lambda x: x[1])
+        print("[build_matchups] WARN: static_features missing; seeds from matchup parse only")
     df = apply_random_t1_t2_swap(df, seed=42)
     rate = float(df["result"].mean())
     print(f"[build_matchups] after t1/t2 balance swap: result mean={rate:.4f} (target ~0.50)")
@@ -316,10 +420,17 @@ def add_priority_cross_deltas(mt: pd.DataFrame) -> pd.DataFrame:
         if "t2_adj_em" not in out.columns:
             out["t2_adj_em"] = out["t2_adjoe"] - out["t2_adjde"]
     if "t1_adj_em" in out.columns and "t2_adj_em" in out.columns:
-        out["delta_adj_em"] = out["t1_adj_em"] - out["t2_adj_em"]
+        dem = pd.to_numeric(out["t1_adj_em"], errors="coerce") - pd.to_numeric(
+            out["t2_adj_em"], errors="coerce"
+        )
+        out["delta_adj_em"] = dem.clip(-40.0, 40.0)
     if "t1_seed" in out.columns and "t2_seed" in out.columns:
         out["delta_seed"] = pd.to_numeric(out["t1_seed"], errors="coerce") - pd.to_numeric(
             out["t2_seed"], errors="coerce"
+        )
+    if "t1_barthag" in out.columns and "t2_barthag" in out.columns:
+        out["delta_barthag"] = pd.to_numeric(out["t1_barthag"], errors="coerce") - pd.to_numeric(
+            out["t2_barthag"], errors="coerce"
         )
     return out
 
@@ -360,6 +471,11 @@ def add_matchup_derived(mt: pd.DataFrame) -> pd.DataFrame:
     ).astype(np.int8)
     out["is_bubble_year"] = (out["year"] == 2021).astype(np.int8)
     out["coach_tourn_win_rate"] = np.nan
+    for side in ("t1", "t2"):
+        c = f"{side}_coach_tourn_appearances"
+        if c in out.columns:
+            v = pd.to_numeric(out[c], errors="coerce").fillna(0.0)
+            out[f"{side}_coach_is_first_tourn"] = (v <= 0).astype(np.int8)
     return out
 
 
@@ -384,6 +500,45 @@ def merge_seed_priors(mt: pd.DataFrame, priors: pd.DataFrame) -> pd.DataFrame:
     )
     out = out.drop(columns=["seed_low", "seed_high"], errors="ignore")
     return out
+
+
+def add_historical_win_rate_for_team1(mt: pd.DataFrame, priors: pd.DataFrame) -> pd.DataFrame:
+    """
+    Join pooled (seed_low, seed_high) prior; expose ``historical_win_rate`` as P(team1 wins)
+    and ``sample_size`` as games backing the pair.
+    """
+    tmp = mt.copy()
+    s1 = pd.to_numeric(tmp["t1_seed"], errors="coerce")
+    s2 = pd.to_numeric(tmp["t2_seed"], errors="coerce")
+    tmp["_lo"] = np.minimum(s1, s2)
+    tmp["_hi"] = np.maximum(s1, s2)
+    pr = priors[["seed_low", "seed_high", "historical_win_rate", "sample_size"]].drop_duplicates(
+        subset=["seed_low", "seed_high"]
+    )
+    merged = tmp.merge(
+        pr.rename(columns={"historical_win_rate": "_phr", "sample_size": "_pss"}),
+        left_on=["_lo", "_hi"],
+        right_on=["seed_low", "seed_high"],
+        how="left",
+    )
+    merged = merged.drop(columns=["_lo", "_hi", "seed_low", "seed_high"], errors="ignore")
+    ms1 = pd.to_numeric(merged["t1_seed"], errors="coerce")
+    ms2 = pd.to_numeric(merged["t2_seed"], errors="coerce")
+    ph = merged["_phr"].fillna(0.5)
+    merged["historical_win_rate"] = np.where(
+        ms1.isna() | ms2.isna(),
+        np.nan,
+        np.where(ms1 == ms2, 0.5, np.where(ms1 < ms2, ph, 1.0 - ph)),
+    )
+    merged["sample_size"] = merged["_pss"].fillna(0).astype(np.int64)
+    merged = merged.drop(columns=["_phr", "_pss"], errors="ignore")
+    return merged
+
+
+def drop_matchup_noise_columns(mt: pd.DataFrame) -> pd.DataFrame:
+    """Remove cumulative/noise columns from the matchup matrix."""
+    drop = [c for c in mt.columns if c in MATCHUP_DROP_COLS]
+    return mt.drop(columns=drop, errors="ignore")
 
 
 def build_matchups() -> pd.DataFrame:
@@ -413,6 +568,10 @@ def build_matchups() -> pd.DataFrame:
     mt = mt.merge(r1, on=["t1_team_norm", "year"], how="left")
     mt = mt.merge(r2, on=["t2_team_norm", "year"], how="left")
 
+    for c in list(mt.columns):
+        if "coach_tourn_appearances" in c or "coach_final_four_count" in c or "coach_champ_count" in c:
+            mt[c] = pd.to_numeric(mt[c], errors="coerce").fillna(0.0)
+
     mt = add_delta_columns(mt)
     mt = add_priority_cross_deltas(mt)
     mt = add_matchup_derived(mt)
@@ -421,10 +580,12 @@ def build_matchups() -> pd.DataFrame:
         sp = pd.read_parquet(SEED_PAIR_PATH)
         sp_agg = aggregate_seed_priors(sp)
         mt = merge_seed_priors(mt, sp_agg)
+        mt = add_historical_win_rate_for_team1(mt, sp_agg)
     else:
         print("[build_matchups] seed_pair_win_rates missing; skipping prior join")
 
     mt = mt.drop(columns=["_seed_low", "_seed_high"], errors="ignore")
+    mt = drop_matchup_noise_columns(mt)
     return mt
 
 

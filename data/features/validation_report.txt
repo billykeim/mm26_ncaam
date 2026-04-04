@@ -3,10 +3,8 @@ PASSED (3):
   - No 2020 rows in rolling/matchup (or year col missing)
   - Rolling roll10_win_rate spot-check vs prior games
   - Quality and schema checks executed (see WARNINGS)
-WARNINGS (5):
+WARNINGS (3):
   - LOO 2019: manual audit recommended — static/rolling exclude in-tournament games by design
   - t1_team_norm: 79 values not in team_name_map canonical/torvik set
   - t2_team_norm: 105 values not in team_name_map canonical/torvik set
-  - delta_adj_em max abs 296.00 outside [-40,40]
-  - Unregistered columns (sample 15): ['ord_date']
 FAILED (0):

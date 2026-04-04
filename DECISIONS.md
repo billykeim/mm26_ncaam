@@ -255,6 +255,7 @@ mm26_ncaam/
 | 2026-04-04 | Step 5 training splits | 16 LOO folds; train/test parquet per year; feature_list_v1.txt 456 numeric features | Fit + calibrate model |
 | 2026-03-29 | FIX 3 static join | `team_ratings` years had school in `rank` and conf in `team`; rewrote `team`, row-order `rank`, merged four_factors; matchup `t1_barthag` null ~1.4% | FIX 4 rolling dates + validator |
 | 2026-03-29 | FIX 4 rolling + validate | Synthetic `game_date` linear in [Nov Y−1, Selection Sunday); rolling snapshot `year ==` tournament year; `align_team_norm_for_game_log` + map tweaks; validate FAILED games/year [63,67] + roll10 nulls | Modeling |
+| 2026-03-29 | Pre-modeling data quality | Legacy `team_ratings` remap (adjoe/adjde/barthag); NCAA seeds parse+propagate+barthag impute; `historical_win_rate`/`sample_size` from seed priors; drop fun/con_/ord_date/season; coach 0-fill + `coach_is_first_tourn`; `delta_adj_em` clip ±40 | Fit XGBoost v1 |
 
 ---
 

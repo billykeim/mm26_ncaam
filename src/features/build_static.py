@@ -41,6 +41,39 @@ def _fix_team_ratings_column_swap(tm: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def _fix_legacy_team_ratings_metrics(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    ``team_ratings`` pretournament rows (``timemachine_available`` 0) misplace metrics:
+    adjusted offensive efficiency sits in ``oe_rank``, defensive in ``qual_d`` (fraction of
+    average D1), and ``barthag`` win-probability sits in ``de_rank``. Remap so ``adjoe``,
+    ``adjde``, and ``barthag`` match time-machine semantics for downstream ``adj_em`` deltas.
+    """
+    out = df.copy()
+    avail = pd.to_numeric(out.get("timemachine_available", 1), errors="coerce").fillna(1).astype(
+        int
+    )
+    mask = avail == 0
+    if not mask.any():
+        return out
+    oe_eff = pd.to_numeric(out.loc[mask, "oe_rank"], errors="coerce")
+    qd = pd.to_numeric(out.loc[mask, "qual_d"], errors="coerce").clip(0.0, 1.0)
+    de_prob = pd.to_numeric(out.loc[mask, "de_rank"], errors="coerce")
+    out.loc[mask, "adjoe"] = oe_eff
+    # ``qual_d`` is a defensive quality percentile vs D1; map to adj DE ~70–120.
+    out.loc[mask, "adjde"] = 100.0 + 40.0 * (0.5 - qd)
+    out.loc[mask, "barthag"] = de_prob.clip(0.0, 1.0)
+    return out
+
+
+def _impute_coach_store_nulls(df: pd.DataFrame) -> pd.DataFrame:
+    """First-year / missing coach rows: zero tournament history (explicit signal)."""
+    out = df.copy()
+    for c in ("coach_tourn_appearances", "coach_final_four_count", "coach_champ_count"):
+        if c in out.columns:
+            out[c] = pd.to_numeric(out[c], errors="coerce").fillna(0).astype(float)
+    return out
+
+
 def _log_nulls(df: pd.DataFrame, label: str) -> None:
     """Print row count and null rate per column (top 15)."""
     n = len(df)
@@ -138,6 +171,9 @@ def merge_static(
         merged["year"] = pd.to_numeric(merged["year"], errors="coerce").astype(int)
         merged = merged.merge(cs_agg, on=["team_norm", "year"], how="left")
     _log_nulls(merged, "after coach_store merge")
+
+    merged = _fix_legacy_team_ratings_metrics(merged)
+    merged = _impute_coach_store_nulls(merged)
 
     merged["is_bubble_year"] = (merged["year"] == 2021).astype(int)
     return merged

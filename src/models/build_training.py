@@ -50,6 +50,10 @@ def feature_columns(df: pd.DataFrame) -> list[str]:
                 "seed_prior_historical_win_rate",
                 "seed_prior_last_5yr_win_rate",
                 "seed_prior_sample_size",
+                "historical_win_rate",
+                "sample_size",
+                "t1_coach_is_first_tourn",
+                "t2_coach_is_first_tourn",
             ):
                 continue
         out.append(c)
